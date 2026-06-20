@@ -17,12 +17,15 @@ import {
   Users,
   Zap,
   ChevronDown,
+  Cpu,
+  Sparkles,
 } from 'lucide-react-native';
 import { useLanguage } from '../../core/state/LanguageContext';
 import { useTheme } from '../../core/state/ThemeContext';
 import { useWeatherClock } from './hooks/useWeatherClock';
 import { GlassCard } from '../../core/components/GlassCard';
 import { AudioButton } from '../../core/components/AudioButton';
+import { DI } from '../../core/di';
 import {
   getConditionTranslations,
   getConditionEmoji,
@@ -244,6 +247,22 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
 
   const isDark = theme === 'dark';
 
+  const handleOrvakalPress = async () => {
+    const speechService = DI.getSpeechService();
+    const isSpeaking = await speechService.isSpeaking();
+    if (isSpeaking) {
+      await speechService.stop();
+    } else {
+      const welcomeMessage = {
+        en: "Welcome to Orvakal Digital Hub, a smart village portal for Andhra Pradesh's fast-growing mega industrial, solar, and agricultural hub.",
+        te: "ఆంధ్రప్రదేశ్ లో వేగంగా అభివృద్ధి చెందుతున్న మెగా పారిశ్రామిక, సౌర విద్యుత్ మరియు వ్యవసాయ కేంద్రమైన ఓర్వకల్లు డిజిటల్ హబ్‌కు స్వాగతం.",
+        hi: "आंध्र प्रदेश के तेजी से बढ़ते मेगा औद्योगिक, सौर और कृषि हब, ओरवाकल डिजिटल हब में आपका स्वागत है।"
+      }[lang as 'en' | 'te' | 'hi'] || "Welcome to Orvakal Digital Hub.";
+      
+      await speechService.speak(welcomeMessage, lang);
+    }
+  };
+
   return (
     <>
       <ScrollView
@@ -265,64 +284,83 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
         >
           <Search size={16} color={isDark ? '#a5b4fc' : '#6366f1'} style={styles.searchIcon} />
           <TextInput
+            placeholder={t.searchPlaceholder}
+            placeholderTextColor={isDark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)'}
             style={[styles.searchInput, { color: colors.foreground }]}
-            placeholder={
-              lang === 'te'
-                ? 'సేవలు, దుకాణాలు, స్థానాలు శోధించండి...'
-                : lang === 'hi'
-                ? 'सेवाएं, दुकानें, स्थान खोजें...'
-                : 'Search services, shops, locations...'
-            }
-            placeholderTextColor={isDark ? 'rgba(165,180,252,0.5)' : 'rgba(99,102,241,0.4)'}
             value={searchText}
             onChangeText={setSearchText}
           />
         </View>
 
-        {/* ── 2. SOS Emergency Banner ────────────────────────────── */}
+        {/* ── 2. SOS Banner ───────────────────────────────────────── */}
         <TouchableOpacity
-          style={[
-            styles.sosStrip,
-            {
-              backgroundColor: isDark ? '#4C1D15' : '#FFE4E6',
-              borderColor: isDark ? '#7F1D1D' : '#FECACA',
-              borderWidth: 1.5,
-              shadowColor: isDark ? '#000000' : '#ef4444',
-              shadowOpacity: isDark ? 0.2 : 0.1,
-            },
-          ]}
+          style={styles.sosStrip}
           onPress={onSosClick}
-          accessibilityRole="button"
-          accessibilityLabel="SOS Emergency Hotlines"
+          activeOpacity={0.8}
         >
           <View style={styles.sosInner}>
-            <ShieldAlert size={18} color={isDark ? '#FECACA' : '#991B1B'} style={styles.marginRight} />
-            <Text style={[styles.sosText, { color: isDark ? '#FECACA' : '#991B1B' }]}>{t.emergencySOS || 'SOS Emergency Hotlines'}</Text>
+            <ShieldAlert size={18} color="#ffffff" style={styles.marginRight} />
+            <Text style={styles.sosText}>
+              {lang === 'te'
+                ? 'అత్యవసర SOS హెల్ప్‌లైన్'
+                : lang === 'hi'
+                ? 'आपातकालीन एसओएस हेल्पलाइन'
+                : 'EMERGENCY SOS HOTLINES'}
+            </Text>
           </View>
-          <View style={[styles.sosBadge, { backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.04)', borderColor: isDark ? '#7F1D1D' : '#FECACA' }]}>
-            <Zap size={10} color={isDark ? '#FECACA' : '#991B1B'} style={{ marginRight: 3 }} />
-            <Text style={[styles.sosBadgeText, { color: isDark ? '#FECACA' : '#991B1B' }]}>24/7 CALL</Text>
+          <View style={styles.sosBadge}>
+            <Text style={styles.sosBadgeText}>
+              {lang === 'te' ? 'సహాయం పొందండి' : lang === 'hi' ? 'सहायता लें' : 'GET HELP'}
+            </Text>
           </View>
         </TouchableOpacity>
 
         {/* ── 3. Hero Banner (with embedded weather + time) ───────── */}
-        <View style={styles.heroBanner}>
-          <Image
-            source={require('../../../assets/orvakal_hero_bg.png')}
-            style={StyleSheet.absoluteFillObject}
-            resizeMode="cover"
-          />
-
+        <View
+          style={[
+            styles.heroBanner,
+            {
+              backgroundColor: colors.uniformPastelBg,
+              borderColor: colors.border,
+              borderWidth: 1.5,
+            }
+          ]}
+        >
           <View style={styles.heroContent}>
             <View style={styles.heroTitleRow}>
-              <Text style={styles.heroTitle}>ORVAKAL</Text>
-              <View style={styles.heroTitleBadge}>
+              <TouchableOpacity
+                style={[
+                  styles.heroTitleButton,
+                  {
+                    backgroundColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 107, 120, 0.08)',
+                    borderColor: isDark ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 107, 120, 0.25)',
+                  }
+                ]}
+                onPress={handleOrvakalPress}
+                activeOpacity={0.7}
+                accessibilityRole="button"
+                accessibilityLabel="Read Orvakal introduction aloud"
+              >
+                <Cpu size={14} color={isDark ? '#34d399' : colors.primary} style={{ marginRight: 6 }} />
+                <Text style={[styles.heroTitle, { color: isDark ? '#ffffff' : colors.primary }]}>ORVAKAL</Text>
+                <Sparkles size={11} color={isDark ? '#fbbf24' : '#e65c00'} style={{ marginLeft: 6 }} />
+              </TouchableOpacity>
+
+              <View
+                style={[
+                  styles.heroTitleBadge,
+                  {
+                    backgroundColor: isDark ? 'rgba(74,222,128,0.18)' : 'rgba(22,163,74,0.12)',
+                    borderColor: isDark ? 'rgba(74,222,128,0.35)' : 'rgba(22,163,74,0.25)',
+                  }
+                ]}
+              >
                 <View style={styles.greenDot} />
-                <Text style={styles.heroTitleBadgeText}>LIVE</Text>
+                <Text style={[styles.heroTitleBadgeText, { color: isDark ? '#4ade80' : '#15803d' }]}>LIVE</Text>
               </View>
             </View>
 
-            <Text style={styles.heroDesc}>
+            <Text style={[styles.heroDesc, { color: isDark ? 'rgba(255,255,255,0.85)' : '#334155' }]}>
               {lang === 'te'
                 ? 'ఆంధ్రప్రదేశ్ వేగంగా అభివృద్ధి చెందుతున్న మెగా పారిశ్రామిక కేంద్రం. సౌర పార్కులు, విమాన రవాణా మరియు వ్యవసాయ సేవలు మీ చేతి వేళ్ళ చివర.'
                 : lang === 'hi'
@@ -331,20 +369,44 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
             </Text>
 
             <View style={styles.heroBadgeRow}>
-              <View style={styles.heroBadge}>
+              <View
+                style={[
+                  styles.heroBadge,
+                  {
+                    backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0, 107, 120, 0.06)',
+                    borderColor: isDark ? 'rgba(255,255,255,0.18)' : 'rgba(0, 107, 120, 0.15)',
+                  }
+                ]}
+              >
                 <View style={styles.greenDot} />
-                <Text style={styles.heroBadgeText}>
+                <Text style={[styles.heroBadgeText, { color: isDark ? '#ffffff' : '#0f172a' }]}>
                   {lang === 'te' ? 'క్రియాశీల పంచాయత్' : lang === 'hi' ? 'सक्रिय पंचायत' : 'Active Panchayat'}
                 </Text>
               </View>
-              <TouchableOpacity style={[styles.heroBadge, styles.heroBadgeAirport]} onPress={onAirportClick}>
-                <Text style={styles.heroBadgeText}>✈️ Airport KJB</Text>
+              <TouchableOpacity
+                style={[
+                  styles.heroBadge,
+                  styles.heroBadgeAirport,
+                  {
+                    backgroundColor: isDark ? 'rgba(251,191,36,0.15)' : '#fef3c7',
+                    borderColor: isDark ? 'rgba(251,191,36,0.3)' : '#fde68a',
+                  }
+                ]}
+                onPress={onAirportClick}
+              >
+                <Text style={[styles.heroBadgeText, { color: isDark ? '#fbbf24' : '#b45309' }]}>✈️ Airport KJB</Text>
               </TouchableOpacity>
             </View>
 
             {/* ── Embedded Weather + Time Strip ── */}
             <TouchableOpacity
-              style={styles.weatherStrip}
+              style={[
+                styles.weatherStrip,
+                {
+                  backgroundColor: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.65)',
+                  borderColor: isDark ? 'rgba(255,255,255,0.12)' : 'rgba(0,107,120,0.12)',
+                }
+              ]}
               onPress={() => onShortcutClick('weather')}
               accessibilityLabel="View detailed weather"
             >
@@ -352,54 +414,60 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
               <View style={styles.weatherStripLeft}>
                 <Text style={styles.weatherStripEmoji}>{condEmoji}</Text>
                 <View>
-                  <Text style={styles.weatherStripTemp}>{weatherData.temperature}°C</Text>
-                  <Text style={styles.weatherStripCond} numberOfLines={1}>{localizedCondition}</Text>
+                  <Text style={[styles.weatherStripTemp, { color: isDark ? '#ffffff' : colors.foreground }]}>{weatherData.temperature}°C</Text>
+                  <Text style={[styles.weatherStripCond, { color: isDark ? 'rgba(255,255,255,0.7)' : colors.mutedForeground }]} numberOfLines={1}>{localizedCondition}</Text>
                 </View>
               </View>
 
               {/* Divider */}
-              <View style={styles.weatherStripDivider} />
+              <View style={[styles.weatherStripDivider, { backgroundColor: isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,107,120,0.15)' }]} />
 
               {/* Mid: humidity + wind */}
               <View style={styles.weatherStripMid}>
-                <Text style={styles.weatherStripStat}>💧 {weatherData.humidity}%</Text>
-                <Text style={styles.weatherStripStat}>🌬️ {weatherData.windSpeed} km/h</Text>
+                <Text style={[styles.weatherStripStat, { color: isDark ? 'rgba(255,255,255,0.85)' : colors.mutedForeground }]}>💧 {weatherData.humidity}%</Text>
+                <Text style={[styles.weatherStripStat, { color: isDark ? 'rgba(255,255,255,0.85)' : colors.mutedForeground }]}>🌬️ {weatherData.windSpeed} km/h</Text>
               </View>
 
               {/* Divider */}
-              <View style={styles.weatherStripDivider} />
+              <View style={[styles.weatherStripDivider, { backgroundColor: isDark ? 'rgba(255,255,255,0.2)' : 'rgba(0,107,120,0.15)' }]} />
 
               {/* Right: time */}
               <View style={styles.weatherStripRight}>
-                <Text style={styles.weatherStripTime}>{timeString}</Text>
-                <Text style={styles.weatherStripTimeLabel}>
-                  {lang === 'te' ? 'స్థానిక సమయం' : lang === 'hi' ? 'स्थानीय समय' : 'Local Time'}
+                <Text style={[styles.weatherStripTime, { color: isDark ? '#ffffff' : colors.primary }]}>{timeString}</Text>
+                <Text style={[styles.weatherStripTimeLabel, { color: isDark ? 'rgba(255,255,255,0.6)' : colors.mutedForeground }]}>
+                  {lang === 'te' ? 'స్థానిక సమయం' : lang === 'hi' ? 'స్థానీయ సమయ్' : 'Local Time'}
                 </Text>
               </View>
 
               {/* Tap hint */}
-              <ChevronDown size={12} color="rgba(255,255,255,0.6)" style={{ marginLeft: 4 }} />
+              <ChevronDown size={12} color={isDark ? 'rgba(255,255,255,0.6)' : colors.mutedForeground} style={{ marginLeft: 4 }} />
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={styles.investorCta}
+              style={[
+                styles.investorCta,
+                {
+                  backgroundColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(230, 92, 0, 0.08)',
+                  borderColor: isDark ? 'rgba(255,255,255,0.15)' : 'rgba(230, 92, 0, 0.15)',
+                }
+              ]}
               onPress={() => onShortcutClick('insights')}
             >
               <View style={styles.investorLeft}>
                 <Text style={styles.investorBulb}>💡</Text>
                 <View>
-                  <Text style={styles.investorTitle}>
+                  <Text style={[styles.investorTitle, { color: isDark ? '#ffffff' : '#0f172a' }]}>
                     {lang === 'te'
                       ? 'ఓర్వకల్లు పారిశ్రామిక హబ్ అంతర్దృష్టులు'
                       : lang === 'hi'
                       ? 'ओरवाकल इंडस्ट्रियल हब इनसाइट्स'
                       : 'Orvakal Industrial Hub Insights'}
                   </Text>
-                  <Text style={styles.investorZone}>INVESTOR ZONE</Text>
+                  <Text style={[styles.investorZone, { color: isDark ? '#fbbf24' : '#e65c00' }]}>INVESTOR ZONE</Text>
                 </View>
               </View>
-              <View style={styles.investorArrow}>
-                <ArrowRight size={16} color="#ffffff" />
+              <View style={[styles.investorArrow, { backgroundColor: isDark ? 'rgba(255,255,255,0.15)' : 'rgba(230, 92, 0, 0.15)' }]}>
+                <ArrowRight size={16} color={isDark ? '#ffffff' : '#e65c00'} />
               </View>
             </TouchableOpacity>
           </View>
@@ -824,7 +892,11 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   heroBase: {
-    ...StyleSheet.absoluteFillObject,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
     backgroundColor: '#0d1f2d',
   },
   heroGlowLeft: {
@@ -858,11 +930,27 @@ const styles = StyleSheet.create({
   },
   heroContent: { padding: 22, zIndex: 1 },
   heroTitleRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 },
+  heroTitleButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1.5,
+    borderRadius: 20,
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.15,
+    shadowRadius: 5,
+    elevation: 3,
+  },
   heroTitle: {
     color: '#ffffff',
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: '900',
-    letterSpacing: 5,
+    letterSpacing: 4,
+    textShadowColor: 'rgba(0, 0, 0, 0.35)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 2.5,
   },
   heroTitleBadge: {
     flexDirection: 'row',

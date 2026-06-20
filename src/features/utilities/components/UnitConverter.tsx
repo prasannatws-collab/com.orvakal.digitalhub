@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 
 interface UnitConverterProps {
@@ -44,14 +44,16 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ colors, isDark }) 
 
   const def = UNIT_DEFS[category];
 
-  const convert = (val: string) => {
-    setInputVal(val);
-    const num = parseFloat(val);
-    if (isNaN(num)) { setResult(''); return; }
+  useEffect(() => {
+    const num = parseFloat(inputVal);
+    if (isNaN(num)) {
+      setResult('');
+      return;
+    }
     const base = def.toBase(num, fromUnit);
     const out  = def.fromBase(base, toUnit);
     setResult(isFinite(out) ? (Math.round(out * 1e8) / 1e8).toString() : '—');
-  };
+  }, [inputVal, fromUnit, toUnit, category]);
 
   const switchCat = (c: UnitCategory) => {
     setCategory(c);
@@ -82,7 +84,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ colors, isDark }) 
       <View style={styles.unitChipContainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6 }}>
           {def.units.map((u) => (
-            <TouchableOpacity key={u} style={[styles.unitChip, { backgroundColor: fromUnit === u ? colors.uniformPastelBg : colors.card, borderColor: fromUnit === u ? colors.uniformPastelBorder : colors.border }]} onPress={() => { setFromUnit(u); convert(inputVal); }}>
+            <TouchableOpacity key={u} style={[styles.unitChip, { backgroundColor: fromUnit === u ? colors.uniformPastelBg : colors.card, borderColor: fromUnit === u ? colors.uniformPastelBorder : colors.border }]} onPress={() => setFromUnit(u)}>
               <Text style={[styles.unitChipText, { color: fromUnit === u ? colors.uniformPastelText : colors.foreground }]}>{u}</Text>
             </TouchableOpacity>
           ))}
@@ -94,7 +96,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ colors, isDark }) 
       <View style={styles.unitChipContainer}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6 }}>
           {def.units.map((u) => (
-            <TouchableOpacity key={u} style={[styles.unitChip, { backgroundColor: toUnit === u ? colors.uniformPastelBg : colors.card, borderColor: toUnit === u ? colors.uniformPastelBorder : colors.border }]} onPress={() => { setToUnit(u); convert(inputVal); }}>
+            <TouchableOpacity key={u} style={[styles.unitChip, { backgroundColor: toUnit === u ? colors.uniformPastelBg : colors.card, borderColor: toUnit === u ? colors.uniformPastelBorder : colors.border }]} onPress={() => setToUnit(u)}>
               <Text style={[styles.unitChipText, { color: toUnit === u ? colors.uniformPastelText : colors.foreground }]}>{u}</Text>
             </TouchableOpacity>
           ))}
@@ -108,7 +110,7 @@ export const UnitConverter: React.FC<UnitConverterProps> = ({ colors, isDark }) 
         placeholderTextColor={colors.mutedForeground}
         keyboardType="numeric"
         value={inputVal}
-        onChangeText={convert}
+        onChangeText={setInputVal}
       />
 
       {result !== '' && (

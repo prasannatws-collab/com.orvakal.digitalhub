@@ -205,7 +205,9 @@ export const translations = {
     megaIndustries: "Mega Industries",
     
     // Insights Renaming
-    insightsTitle: "Orvakal Industrial Hub Insights"
+    insightsTitle: "Orvakal Industrial Hub Insights",
+    privacyPolicy: "Privacy Policy",
+    privacyTitle: "Privacy & Data Usage"
   },
   te: {
     title: "ఓర్వకల్లు డిజిటల్ హబ్",
@@ -413,7 +415,9 @@ export const translations = {
     megaIndustries: "మెగా పరిశ్రమలు",
     
     // Insights Renaming
-    insightsTitle: "ఓర్వకల్లు పారిశ్రామిక హబ్ అంతర్దృష్టులు"
+    insightsTitle: "ఓర్వకల్లు పారిశ్రామిక హబ్ అంతర్దృష్టులు",
+    privacyPolicy: "గోప్యతా విధానం",
+    privacyTitle: "గోప్యత & డేటా వినియోగం"
   },
   hi: {
     title: "ओरवाकल डिजिटल हब",
@@ -621,6 +625,8 @@ export const translations = {
     megaIndustries: "मेगा उद्योग",
     
     // Insights Renaming
-    insightsTitle: "ओरवाकल औद्योगिक हब अंतर्दृष्टि"
+    insightsTitle: "ओरवाकल औद्योगिक हब अंतर्दृष्टि",
+    privacyPolicy: "गोपनीयता नीति",
+    privacyTitle: "गोपनीयता और डेटा उपयोग"
   }
 };

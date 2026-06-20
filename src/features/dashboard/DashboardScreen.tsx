@@ -41,6 +41,7 @@ interface DashboardScreenProps {
   onSosClick: () => void;
   onAirportClick: () => void;
   onScroll?: (event: any) => void;
+  onPrivacyClick?: () => void;
 }
 
 // Persona tab definitions
@@ -228,6 +229,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
   onSosClick,
   onAirportClick,
   onScroll,
+  onPrivacyClick,
 }) => {
   const { t, getTxt, lang } = useLanguage();
   const { colors, theme }   = useTheme();
@@ -735,6 +737,18 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
             ))}
           </ScrollView>
         </View>
+
+        {/* ── 10. Footer Section ───────────────────────────────────── */}
+        <View style={[styles.footerSection, { borderTopColor: colors.border }]}>
+          <Text style={[styles.footerText, { color: colors.mutedForeground }]}>
+            © 2026 Orvakal Gram Panchayat. All Rights Reserved.
+          </Text>
+          <TouchableOpacity onPress={onPrivacyClick}>
+            <Text style={[styles.footerPrivacyLink, { color: colors.primary }]}>
+              {t.privacyPolicy}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </>
   );
@@ -1144,4 +1158,21 @@ const styles = StyleSheet.create({
   attFooter: { flexDirection: 'row', justifyContent: 'space-between', borderTopWidth: 1, paddingTop: 6, marginTop: 6 },
   attDistance: { fontSize: 10, fontWeight: 'bold' },
   attStatus: { fontSize: 10, fontWeight: 'bold' },
+  footerSection: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 24,
+    borderTopWidth: 1,
+    marginTop: 20,
+    gap: 8,
+  },
+  footerText: {
+    fontSize: 10,
+    textAlign: 'center',
+  },
+  footerPrivacyLink: {
+    fontSize: 11,
+    fontWeight: '700',
+    textDecorationLine: 'underline',
+  },
 });

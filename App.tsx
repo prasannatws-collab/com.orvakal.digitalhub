@@ -24,6 +24,7 @@ import { Badge } from './src/core/components/Badge';
 import { registeredCompanies } from './src/data/datasources/static/registeredCompanies';
 import { emergencies } from './src/data/datasources/static/govtData';
 import { notices } from './src/data/datasources/static/noticesData';
+import { privacySections } from './src/data/datasources/static/privacyData';
 
 type Tab = 'home' | 'directory' | 'farmer' | 'services' | 'jobs' | 'insights' | 'weather' | 'utilities';
 
@@ -79,6 +80,7 @@ function MainAppShell() {
   const [selectedIndustry, setSelectedIndustry] = useState<any | null>(null);
   const [selectedCompany, setSelectedCompany] = useState<any | null>(null);
   const [companiesModalOpen, setCompaniesModalOpen] = useState(false);
+  const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
 
   const handleShortcutClick = (
     tabName: Tab,
@@ -183,6 +185,7 @@ function MainAppShell() {
             onSosClick={() => setSosModalOpen(true)}
             onAirportClick={() => setAirportModalOpen(true)}
             onScroll={handleScroll}
+            onPrivacyClick={() => setPrivacyModalOpen(true)}
           />
         )}
 
@@ -415,6 +418,37 @@ function MainAppShell() {
             </TouchableOpacity>
           </View>
         )}
+      </CustomModal>
+
+      {/* F. Privacy Policy Modal */}
+      <CustomModal
+        isOpen={privacyModalOpen}
+        onClose={() => setPrivacyModalOpen(false)}
+        title={t.privacyTitle || "Privacy & Data Protection"}
+      >
+        <View style={styles.privacyModalContainer}>
+          {privacySections.map((sec) => (
+            <View key={sec.id} style={[styles.privacyCard, { backgroundColor: `${colors.muted}15`, borderColor: colors.border }]}>
+              <View style={styles.privacyCardHeader}>
+                <Text style={styles.privacyEmoji}>{sec.emoji}</Text>
+                <Text style={[styles.privacySectionTitle, { color: colors.foreground }]}>
+                  {getTxt(sec.title)}
+                </Text>
+              </View>
+              <Text style={[styles.privacySectionContent, { color: colors.mutedForeground }]}>
+                {getTxt(sec.content)}
+              </Text>
+            </View>
+          ))}
+          <Text style={[styles.privacyFooterText, { color: colors.mutedForeground }]}>
+            {lang === 'te' 
+              ? "పూర్తి పత్రం కోసం, ప్రాజెక్ట్ రూట్ లోని PRIVACY_POLICY.md ఫైల్ చూడండి."
+              : lang === 'hi'
+              ? "पूर्ण दस्तावेज के लिए, प्रोजेक्ट रूट में PRIVACY_POLICY.md फ़ाइल देखें।"
+              : "For the full legal document, please refer to the PRIVACY_POLICY.md file in the project root."
+            }
+          </Text>
+        </View>
       </CustomModal>
 
     </SafeAreaView>
@@ -695,5 +729,36 @@ const styles = StyleSheet.create({
   },
   marginRight: {
     marginRight: 4,
+  },
+  privacyModalContainer: {
+    gap: 12,
+  },
+  privacyCard: {
+    borderWidth: 1,
+    borderRadius: 14,
+    padding: 12,
+  },
+  privacyCardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 6,
+  },
+  privacyEmoji: {
+    fontSize: 16,
+  },
+  privacySectionTitle: {
+    fontSize: 13,
+    fontWeight: 'bold',
+  },
+  privacySectionContent: {
+    fontSize: 11,
+    lineHeight: 15,
+  },
+  privacyFooterText: {
+    fontSize: 10,
+    fontStyle: 'italic',
+    textAlign: 'center',
+    marginTop: 8,
   },
 });

@@ -9,17 +9,20 @@
       "distribution": "internal"
     },
     "preview": {
+      "channel": "preview",
       "distribution": "internal",
       "android": {
         "buildType": "apk"
       }
     },
     "production": {
+      "channel": "production",
       "android": {
         "buildType": "app-bundle"
       }
     },
     "beta": {
+      "channel": "beta",
       "android": {
         "buildType": "app-bundle",
         "autoIncrement": true

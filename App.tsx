@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, ScrollView, Linking, Animated, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, ScrollView, Linking, Animated, Image, Platform } from 'react-native';
 import { LayoutDashboard, Building2, Sprout, Home, Briefcase, Bell, Moon, Sun, Phone, ShieldAlert, X } from 'lucide-react-native';
 
 // State & Contexts
@@ -57,7 +57,7 @@ function MainAppShell() {
       navVisible.current = false;
       Animated.spring(navTranslateY, {
         toValue: 120,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== 'web',
         speed: 20,
         bounciness: 0,
       }).start();
@@ -66,7 +66,7 @@ function MainAppShell() {
       navVisible.current = true;
       Animated.spring(navTranslateY, {
         toValue: 0,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== 'web',
         speed: 20,
         bounciness: 4,
       }).start();
@@ -108,7 +108,7 @@ function MainAppShell() {
       navVisible.current = true;
       Animated.spring(navTranslateY, {
         toValue: 0,
-        useNativeDriver: true,
+        useNativeDriver: Platform.OS !== 'web',
         speed: 24,
         bounciness: 0,
       }).start();

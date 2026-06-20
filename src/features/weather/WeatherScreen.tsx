@@ -32,11 +32,7 @@ export const WeatherScreen: React.FC<WeatherScreenProps> = ({ onClose }) => {
   if (weatherLoading) {
     return (
       <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]}>
-        <View style={styles.centerContainer}>
-          <Text style={[styles.loadingText, { color: colors.foreground }]}>
-            {lang === 'te' ? 'వాతావరణ వివరాలు లోడ్ అవుతున్నాయి...' : lang === 'hi' ? 'मौसम का विवरण लोड हो रहा है...' : 'Loading weather details...'}
-          </Text>
-        </View>
+        <View style={styles.centerContainer}><Text style={[styles.loadingText, { color: colors.foreground }]}>{lang === 'te' ? 'వాతావరణ వివరాలు లోడ్ అవుతున్నాయి...' : lang === 'hi' ? 'मौसम का विवरण लोड हो रहा है...' : 'Loading weather details...'}</Text></View>
       </SafeAreaView>
     );
   }
@@ -46,12 +42,8 @@ export const WeatherScreen: React.FC<WeatherScreenProps> = ({ onClose }) => {
       <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]}>
         <View style={styles.centerContainer}>
           <AlertTriangle size={48} color="#ef4444" style={{ marginBottom: 12 }} />
-          <Text style={[styles.errorText, { color: colors.foreground }]}>
-            {weatherError || 'Failed to load weather data'}
-          </Text>
-          <TouchableOpacity style={[styles.backBtnText, { backgroundColor: colors.uniformPastelBg, borderColor: colors.uniformPastelBorder, borderWidth: 1 }]} onPress={onClose}>
-            <Text style={{ color: colors.uniformPastelText, fontWeight: 'bold' }}>Go Back</Text>
-          </TouchableOpacity>
+          <Text style={[styles.errorText, { color: colors.foreground }]}>{weatherError || 'Failed to load weather data'}</Text>
+          <TouchableOpacity style={[styles.backBtnText, { backgroundColor: colors.uniformPastelBg, borderColor: colors.uniformPastelBorder, borderWidth: 1 }]} onPress={onClose}><Text style={{ color: colors.uniformPastelText, fontWeight: 'bold' }}>Go Back</Text></TouchableOpacity>
         </View>
       </SafeAreaView>
     );

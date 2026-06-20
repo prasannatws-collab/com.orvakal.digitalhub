@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Animated, Easing } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Animated, Easing, Platform } from 'react-native';
 
 interface CoinSpinnerProps {
   colors: any;
@@ -47,7 +47,7 @@ export const CoinSpinner: React.FC<CoinSpinnerProps> = ({ colors, isDark }) => {
       toValue: 1,
       duration: 5200,
       easing: Easing.bezier(0.15, 0.85, 0.35, 1),
-      useNativeDriver: true,
+      useNativeDriver: Platform.OS !== 'web',
     }).start(() => {
       const outcome = Math.random() < 0.5 ? 'heads' : 'tails';
       setResult(outcome);

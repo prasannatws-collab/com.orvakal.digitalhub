@@ -79,5 +79,5 @@ We may update our Privacy Policy from time to time. We will notify you of any ch
 
 If you have any questions, concerns, or suggestions regarding this Privacy Policy, please contact the Orvakal Village Administration or the app developer:
 
-* **Email:** support@orvakal.digitalhub
-* **Office:** Orvakal Gram Panchayat Office, Kurnool District, Andhra Pradesh, India.
+* **Email:** prasanna.tws@gmail.com
+* **Office:** Orvakal

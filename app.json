@@ -2,7 +2,6 @@
   "expo": {
     "name": "Orvakal Digital Hub",
     "slug": "orvakaldigitalhub",
-    "owner": "prasannatws-collab",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -33,6 +32,11 @@
         "android.permission.ACCESS_FINE_LOCATION",
         "android.permission.RECORD_AUDIO",
         "android.permission.INTERNET",
+        "android.permission.ACCESS_NETWORK_STATE",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.INTERNET",
         "android.permission.ACCESS_NETWORK_STATE"
       ]
     },
@@ -40,7 +44,7 @@
       "favicon": "./assets/favicon.png"
     },
     "updates": {
-      "url": "https://u.expo.dev/",
+      "url": "https://u.expo.dev/c4eac22b-a7d8-40a4-98d5-0f344c1d493b",
       "enabled": true,
       "checkOnLaunch": "ALWAYS"
     },
@@ -49,7 +53,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": ""
+        "projectId": "c4eac22b-a7d8-40a4-98d5-0f344c1d493b"
       }
     }
   }

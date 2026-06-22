@@ -31,7 +31,7 @@ export const banksAndAtms: BankDetailed[] = [
     branch: { en: "Orvakal Branch", te: "ఓర్వకల్లు బ్రాంచ్", hi: "ओरवाकल शाखा" },
     ifsc: "SBIN0011122",
     phone: "+91 8518290300",
-    location: { en: "Highway Circle Junction, Orvakal", te: "హైవే సర్కిల్ జంక్షన్, ఓర్వకల్లు", hi: "हाईवे सर्कल जंक्शन, ओरवाकल" },
+    location: { en: "Nandikotkuru Route, Orvakal, Andhra Pradesh 518010", te: "నందికొట్కూరు రూట్, ఓర్వకల్లు, ఆంధ్రప్రదేశ్ 518010", hi: "नंदीकोटकूर मार्ग, ओरवाकल, आंध्र प्रदेश 518010" },
     hasAtm: true,
     atmStatus: { en: "Working (24/7 Cash Available)", te: "పనిచేస్తుంది (24/7 నగదు అందుబాటులో ఉంది)", hi: "सक्रिय (24/7 नकद उपलब्ध)" },
     timing: { en: "10:00 AM - 04:00 PM", te: "ఉదయం 10:00 - సాయంత్రం 4:00", hi: "सुबह 10:00 - शाम 4:00" },
@@ -130,5 +130,19 @@ export const banksAndAtms: BankDetailed[] = [
         description: { en: "Accident insurance coverage of ₹2 Lakhs at a premium of just ₹20 per year.", te: "సంవత్సరానికి కేవలం రూ. 20 ప్రీమియంతో రూ. 2 లక్షల ప్రమాద బీమా రక్షణ.", hi: "केवल ₹20 प्रति वर्ष के प्रीमियम पर ₹2 लाख का दुर्घटना बीमा कवर।" }
       }
     ]
+  },
+  {
+    id: "bnk-4",
+    name: { en: "India1 ATM", te: "ఇండియా1 ఎటిఎం", hi: "इंडिया1 एटीएम" },
+    branch: { en: "Orvakal", te: "ఓర్వకల్లు", hi: "ओरवाकल" },
+    ifsc: "",
+    phone: "",
+    location: { en: "Main Route, Orvakal, Andhra Pradesh 518010", te: "మెయిన్ రూట్, ఓర్వకల్లు, ఆంధ్రప్రదేశ్ 518010", hi: "मुख्य मार्ग, ओरवाकल, आंध्र प्रदेश 518010" },
+    hasAtm: true,
+    atmStatus: { en: "Working (24/7 Cash Available)", te: "పనిచేస్తుంది (24/7 నగదు అందుబాటులో ఉంది)", hi: "सक्रिय (24/7 नकद उपलब्ध)" },
+    timing: { en: "24 Hours", te: "24 గంటలు", hi: "24 घंटे" },
+    staff: [],
+    services: [],
+    schemes: []
   }
 ];

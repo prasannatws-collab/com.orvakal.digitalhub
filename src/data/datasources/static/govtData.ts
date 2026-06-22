@@ -15,19 +15,11 @@ export const govtOffices: GovtOffice[] = [
   },
   {
     id: "office-sach",
-    name: { en: "Gram Sachivalayam (Village Secretariat)", te: "గ్రామ సచివాలయం", hi: "ग्राम सचिवालय" },
+    name: { en: "Grama Sachivalayam & RBK Office", te: "గ్రామ సచివాలయం & రైతు భరోసా కేంద్రం (RBK)", hi: "ग्राम सचिवालय और रायथू भरोसा केंद्र (आरबीके)" },
     location: { en: "Panchayat Compound, Orvakal", te: "పంచాయతీ ఆవరణ, ఓర్వకల్లు", hi: "पंचायत परिसर, ओरवाकल" },
-    timings: { en: "10:00 AM - 05:00 PM (Sunday Closed)", te: "ఉదయం 10:00 - సాయంత్రం 5:00 (ఆదివారం సెలవు)", hi: "सुबह 10:00 - शाम 5:00 (रविवार बंद)" },
+    timings: { en: "10:00 AM - 05:00 PM (Sunday Closed)", te: "ఉదయం 10:00 - సాయంత్రం 05:00 (ఆదివారం సెలవు)", hi: "सुबह 10:00 - शाम 05:00 (रविवार बंद)" },
     phone: "+91 9440654321",
     icon: "ShieldAlert"
-  },
-  {
-    id: "office-rbk",
-    name: { en: "Rythu Bharosa Kendram (RBK)", te: "రైతు భరోసా కేంద్రం (RBK)", hi: "रायथू भरोसा केंद्र (आरबीके)" },
-    location: { en: "Mandi Bypass Road, Orvakal", te: "మండి బైపాస్ రోడ్, ఓర్వకల్లు", hi: "मंडी बाईपास रोड, ओरवाकल" },
-    timings: { en: "08:00 AM - 06:00 PM (Daily)", te: "ఉదయం 8:00 - సాయంత్రం 6:00 (ప్రతిరోజూ)", hi: "सुबह 8:00 - शाम 6:00 (प्रतिदिन)" },
-    phone: "+91 9849901235",
-    icon: "Sprout"
   },
   {
     id: "office-sro",
@@ -47,7 +39,7 @@ export const govtOffices: GovtOffice[] = [
   },
   {
     id: "office-mpdo",
-    name: { en: "Mandal Parishad Development Office (MPDO)", te: "మండల పరిషత్ అభివృద్ధి కార్యాలయం (MPDO)", hi: "मंडल परिषद विकास कार्यालय" },
+    name: { en: "Mandal Praja Parishat Office", te: "మండల ప్రజా పరిషత్ కార్యాలయం", hi: "मंडल प्रजा परिषद कार्यालय" },
     location: { en: "Mandal Parishad Complex, Orvakal", te: "మండల పరిషత్ కార్యాలయం, ఓర్వకల్లు", hi: "मंडल परिषद परिसर, ओरवाकल" },
     timings: { en: "10:00 AM - 05:00 PM (Sunday Closed)", te: "ఉదయం 10:00 - సాయంత్రం 5:00 (ఆదివారం సెలవు)", hi: "सुबह 10:00 - शाम 5:00 (रविवार बंद)" },
     phone: "+91 8518290666",
@@ -65,11 +57,60 @@ export const govtOffices: GovtOffice[] = [
     id: "office-apiic",
     name: { en: "APIIC Office", te: "APIIC కార్యాలయం", hi: "एपीआईआईसी कार्यालय" },
     location: { en: "Bypass Road, Orvakal", te: "బైపాస్ రోడ్, ఓర్వకల్లు", hi: "बाईपास रोड, ओरवाकल" },
-    timings: { en: "09:00 AM - 06:00 PM (Sunday Closed)", te: "ఉదయం 9:00 - సాయంత్రం 6:00 (रविवार बंद)", hi: "सुबह 9:00 - शाम 6:00 (रविवार बंद)" },
+    timings: { en: "09:00 AM - 06:00 PM (Sunday Closed)", te: "ఉదయం 9:00 - సాయంత్రం 6:00 (ఆదివారం సెలవు)", hi: "सुबह 9:00 - शाम 6:00 (रविवार बंद)" },
     phone: "+91 9848098765",
     icon: "Building2"
+  },
+  {
+    id: "office-agri",
+    name: { en: "Mandal Agriculture Office", te: "మండల వ్యవసాయ కార్యాలయం", hi: "मंडल कृषि कार्यालय" },
+    location: { en: "Mandal Parishad Road, Orvakal", te: "మండల పరిషత్ రోడ్, ఓర్వకల్లు", hi: "मंडल परिषद रोड, ओरवाकल" },
+    timings: { en: "07:00 AM - 05:00 PM (Sunday Closed)", te: "ఉదయం 07:00 - సాయంత్రం 05:00 (ఆదివారం సెలవు)", hi: "सुबह 07:00 - शाम 05:00 (रविवार बंद)" },
+    phone: "",
+    icon: "Sprout"
+  },
+  {
+    id: "office-mgnregs",
+    name: { en: "MGNREGS Office", te: "MGNREGS కార్యాలయం (ఉపాధి హామీ పథకం)", hi: "मनरेगा (MGNREGS) कार्यालय" },
+    location: { en: "Mandal Parishad Complex, Orvakal", te: "మండల పరిషత్ కాంప్లెక్స్, ఓర్వకల్లు", hi: "मंडल परिषद परिसर, ओरवाकल" },
+    timings: { en: "07:00 AM - 05:00 PM (Sunday Closed)", te: "ఉదయం 07:00 - సాయంత్రం 05:00 (ఆదివారం సెలవు)", hi: "सुबह 07:00 - शाम 05:00 (रविवार बंद)" },
+    phone: "",
+    icon: "Briefcase"
+  },
+  {
+    id: "office-msme",
+    name: { en: "MSME Park", te: "MSME పార్క్", hi: "एमएसएमई (MSME) पार्क" },
+    location: { en: "Industrial Corridor, Orvakal", te: "పారిశ్రామిక కారిడార్, ఓర్వకల్లు", hi: "औद्योगिक गलियारा, ओरवाकल" },
+    timings: { en: "09:00 AM - 06:00 PM (Sunday Closed)", te: "ఉదయం 09:00 - సాయంత్రం 06:00 (ఆదివారం సెలవు)", hi: "सुबह 09:00 - शाम 06:00 (रविवार बंद)" },
+    phone: "",
+    icon: "Factory"
+  },
+  {
+    id: "office-powergrid",
+    name: { en: "Power Grid Corporation of India Limited (PGCIL)", te: "పవర్ గ్రిడ్ కార్పొరేషన్ ఆఫ్ ఇండియా లిమిటెడ్ (PGCIL)", hi: "पावर ग्रिड कॉर्पोरेशन ऑफ इंडिया लिमिटेड (PGCIL)" },
+    location: { en: "Substation Zone, Orvakal", te: "సబ్‌స్టేషన్ జోన్, ఓర్వకల్లు", hi: "सबस्टेशन जोन, ओरवाकल" },
+    timings: { en: "09:00 AM - 05:30 PM (Sunday Closed)", te: "ఉదయం 09:00 - సాయంత్రం 05:30 (ఆదివారం సెలవు)", hi: "सुबह 09:00 - शाम 05:30 (रविवार बंद)" },
+    phone: "",
+    icon: "Zap"
+  },
+  {
+    id: "office-solarpark",
+    name: { en: "Kurnool Ultra Mega Solar Park, Greenco (Pinnapuram)", te: "కర్నూలు అల్ట్రా మెగా సోలార్ పార్క్, గ్రీన్‌కో (పిన్నాపురం)", hi: "कर्नूल अल्ट्रा मेगा सोलर पार्क, ग्रीनको (पिन्नापुरम)" },
+    location: { en: "Pinnapuram Route, Orvakal Mandal", te: "పిన్నాపురం రూట్, ఓర్వకల్లు మండలం", hi: "पिन्नापुरम मार्ग, ओरवाकल मंडल" },
+    timings: { en: "09:00 AM - 06:00 PM (Daily)", te: "ఉదయం 09:00 - సాయంత్రం 06:00 (ప్రతిరోజూ)", hi: "सुबह 09:00 - शाम 06:00 (प्रतिदिन)" },
+    phone: "",
+    icon: "Sun"
+  },
+  {
+    id: "office-kranti",
+    name: { en: "Kranti Orvakal Grama Abhivridhi", te: "క్రాంతి ఓర్వకల్లు గ్రామ అభివృద్ధి", hi: "क्रांति ओरवाकल ग्राम विकास" },
+    location: { en: "Main Bazar Road, Orvakal", te: "మెయిన్ బజార్ రోడ్, ఓర్వకల్లు", hi: "मुख्य बाजार रोड, ओरवाकल" },
+    timings: { en: "07:00 AM - 05:00 PM (Sunday Closed)", te: "ఉదయం 07:00 - సాయంత్రం 05:00 (ఆదివారం సెలవు)", hi: "सुबह 07:00 - शाम 05:00 (रविवार बंद)" },
+    phone: "",
+    icon: "Users"
   }
 ];
+
 
 export const govtOfficers: GovtOfficer[] = [
   {
@@ -238,7 +279,7 @@ export const govtOfficers: GovtOfficer[] = [
   },
   {
     id: "govt-5",
-    officeId: "office-rbk",
+    officeId: "office-sach",
     name: {
       en: "Rythu Bharosa Kendram (RBK-1)",
       te: "రైతు భరోసా కేంద్రం (RBK-1)",
@@ -561,10 +602,10 @@ export const govtOfficers: GovtOfficer[] = [
     servicesDescription: {
       en: "Supervises local infrastructure maintenance, resolves drinking water supply issues, coordinates streetlight repairs, and manages sanitation drives in the village.",
       te: "స్థానిక వీధి దీపాలు, డ్రైనేజీ కాలువల శుభ్రత, మరియు తాగునీటి పైప్‌లైన్ల మరమ్మతుల పనుల పర్యవేక్షణ.",
-      hi: "वार्ड स्तर पर पेयजल आपूर्ति, स्ट्रीट लाइट मरम्मत, और स्वच्छता अभियानों के प्रबंधन के लिए जिम्मेदार।"
+      hi: "वार्ड स्तर पर पेयजल आपूर्ति, स्ट्रीट लाइट मरम्मत, और स्वच्छता अभिवार्ड स्तर पर पेयजल आपूर्ति, स्ट्रीट लाइट मरम्मत, और स्वच्छता अभियानों के प्रबंधन में सहायता।"
     }
   }
-];
+]
 
 export const emergencies: EmergencyContact[] = [
   {
@@ -585,16 +626,61 @@ export const emergencies: EmergencyContact[] = [
   {
     id: "emg-2",
     name: {
-      en: "Orvakal Primary Health Center",
-      te: "ఓర్వకల్లు ప్రాథమిక ఆరోగ్య కేంద్రం",
-      hi: "ओरवाकल प्राथमिक स्वास्थ्य केंद्र"
+      en: "Government Primary Health Center (Government PHC)",
+      te: "ప్రభుత్వ ప్రాథమిక ఆరోగ్య కేంద్రం (ప్రభుత్వ PHC)",
+      hi: "सरकारी प्राथमिक स्वास्थ्य केंद्र (सरकारी पीएचसी)"
     },
     phone: "+91 8518256789",
     type: "hospital",
     location: {
-      en: "Main Road, opposite Gram Panchayat",
-      te: "మెయిన్ రోడ్, గ్రామ పంచాయతీ ఎదురుగా",
-      hi: "मुख्य मार्ग, ग्राम पंचायत के सामने"
+      en: "NH-40 Road, Orvakal",
+      te: "NH-40 రోడ్, ఓర్వకల్లు",
+      hi: "एनएच-40 रोड, ओरवाकल"
+    }
+  },
+  {
+    id: "emg-8",
+    name: {
+      en: "Yousuf PHC",
+      te: "యూసుఫ్ పిహెచ్‌సి",
+      hi: "यूसुफ पीएचसी"
+    },
+    phone: "+91 8518256784",
+    type: "hospital",
+    location: {
+      en: "Main Bazar, Main route, Orvakal",
+      te: "మెయిన్ బజార్, మెయిన్ రూట్, ఓర్వకల్లు",
+      hi: "मुख्य बाजार, मुख्य मार्ग, ओरवाकल"
+    }
+  },
+  {
+    id: "emg-9",
+    name: {
+      en: "Ramana PHC",
+      te: "రమణ పిహెచ్‌సి",
+      hi: "रमना पीएचसी"
+    },
+    phone: "+91 8518256785",
+    type: "hospital",
+    location: {
+      en: "Main Bazar, Main route, Orvakal",
+      te: "మెయిన్ బజార్, మెయిన్ రూట్, ఓర్వకల్లు",
+      hi: "मुख्य बाजार, मुख्य मार्ग, ओरवाकल"
+    }
+  },
+  {
+    id: "emg-10",
+    name: {
+      en: "Ranganna PHC",
+      te: "రంగన్న పిహెచ్‌సి",
+      hi: "रंगन्ना पीएचसी"
+    },
+    phone: "+91 8518256786",
+    type: "hospital",
+    location: {
+      en: "Main Bazar, Main route, Orvakal",
+      te: "మెయిన్ బజార్, మెయిన్ రూట్, ఓర్వకల్లు",
+      hi: "मुख्य बाजार, मुख्य मार्ग, ओरवाकल"
     }
   },
   {
@@ -797,6 +883,206 @@ export const schools: SchoolTeacher[] = [
     facilities: [
       { en: "Mid-day meals playground", te: "మధ్యాహ్న భోజన సదుపాయం మరియు ఆట స్థలం", hi: "मध्याह्न भोजन और खेल का मैदान" },
       { en: "Clean Drinking Water Reverse Osmosis Plant", te: "మినరల్ వాటర్ ప్లాంట్ సదుపాయం", hi: "शुद्ध पेयजल आरओ प्लांट" }
+    ],
+    establishedYear: "1985"
+  },
+  {
+    id: "sch-4",
+    name: {
+      en: "Bala Bharathi English Medium School",
+      te: "బాల భారతి ఇంగ్లీష్ మీడియం స్కూల్",
+      hi: "बाल भारती अंग्रेजी माध्यम स्कूल"
+    },
+    schoolName: {
+      en: "Bala Bharathi School, Orvakal",
+      te: "బాల భారతి పాఠశాల, ఓర్వకల్లు",
+      hi: "बाल भारती स्कूल, ओरवाकल"
+    },
+    subject: {
+      en: "English Medium Primary & Secondary (Grades Nursery-10)",
+      te: "ఇంగ్లీష్ మీడియం ప్రైమరీ & సెకండరీ (నర్సరీ-10 తరగతులు)",
+      hi: "अंग्रेजी माध्यम प्राथमिक और माध्यमिक (नर्सरी-10)"
+    },
+    phone: "",
+    type: "school",
+    address: {
+      en: "Main route, Orvakal",
+      te: "మెయిన్ రూట్, ఓర్వకల్లు",
+      hi: "मुख्य मार्ग, ओरवाकल"
+    },
+    principal: {
+      en: "Principal",
+      te: "ప్రిన్సిపాల్",
+      hi: "प्राचार्य"
+    },
+    timings: {
+      en: "07:00 AM - 05:00 PM (Monday - Saturday)",
+      te: "ఉదయం 07:00 - సాయంత్రం 05:00 (సోమ - శని)",
+      hi: "सुबह 07:00 - शाम 05:00 (सोमवार - शनिवार)"
+    },
+    facilities: [
+      { en: "Smart classes & computer laboratory", te: "స్మార్ట్ క్లాసులు మరియు కంప్యూటర్ ల్యాబ్", hi: "स्मार्ट कक्षाएं और कंप्यूटर लैब" },
+      { en: "Playground & extra-curricular activities", te: "ఆట స్థలం మరియు ఇతర సాంస్కృతిక కార్యక్రమాలు", hi: "खेल का मैदान और पाठ्येतर गतिविधियाँ" }
+    ],
+    establishedYear: "2005"
+  },
+  {
+    id: "sch-5",
+    name: {
+      en: "Yella Reddy College",
+      te: "యల్లా రెడ్డి కాలేజీ",
+      hi: "यल्ला रेड्डी कॉलेज"
+    },
+    schoolName: {
+      en: "Yella Reddy College, Orvakal",
+      te: "యల్లా రెడ్డి కాలేజీ, ఓర్వకల్లు",
+      hi: "यल्ला रेड्डी कॉलेज, ओरवाकल"
+    },
+    subject: {
+      en: "Intermediate & Degree Courses",
+      te: "ఇంటర్మీడియట్ మరియు డిగ్రీ కోర్సులు",
+      hi: "इंटरमीडिएट और डिग्री पाठ्यक्रम"
+    },
+    phone: "",
+    type: "school",
+    address: {
+      en: "Main Bazar Road, Orvakal",
+      te: "మెయిన్ బజార్ రోడ్, ఓర్వకల్లు",
+      hi: "मुख्य बाजार रोड, ओरवाकल"
+    },
+    principal: {
+      en: "Principal",
+      te: "ప్రిన్సిపాల్",
+      hi: "प्राचार्य"
+    },
+    timings: {
+      en: "07:00 AM - 05:00 PM (Monday - Saturday)",
+      te: "ఉదయం 07:00 - సాయంత్రం 05:00 (సోమ - శని)",
+      hi: "सुबह 07:00 - शाम 05:00 (सोमवार - शनिवार)"
+    },
+    facilities: [
+      { en: "Well-equipped science and computer labs", te: "సైన్స్ మరియు కంప్యూటర్ ల్యాబ్‌లు", hi: "सुसज्जित विज्ञान और कंप्यूटर लैब" },
+      { en: "Spacious library and seminar halls", te: "లైव्रరీ మరియు సెమినార్ హాల్స్", hi: "विशाल पुस्तकालय और संगोष्ठी कक्ष" }
+    ],
+    establishedYear: "2010"
+  },
+  {
+    id: "sch-6",
+    name: {
+      en: "Kasturba Gandhi Balika Vidyalaya (KGBV)",
+      te: "కస్తూర్బా గాంధీ బాలికల విద్యాలయం (KGBV)",
+      hi: "कस्तूरबा गांधी बालिका विद्यालय (केGBV)"
+    },
+    schoolName: {
+      en: "KGBV Orvakal",
+      te: "KGBV ఓర్వకల్లు",
+      hi: "केGBV ओरवाकल"
+    },
+    subject: {
+      en: "Residential School for Girls (Grades 6-10)",
+      te: "బాలికల రెసిడెన్షియల్ పాఠశాల (6-10 తరగతులు)",
+      hi: "लड़कियों के लिए आवासीय विद्यालय (कक्षा 6-10)"
+    },
+    phone: "",
+    type: "school",
+    address: {
+      en: "Near Mandal Office, Orvakal",
+      te: "మండల కార్యాలయం సమీపంలో, ఓర్వకల్లు",
+      hi: "मंडल कार्यालय के पास, ओरवाकल"
+    },
+    principal: {
+      en: "Special Officer",
+      te: "ప్రత్యేకాధికారి",
+      hi: "विशेष अधिकारी"
+    },
+    timings: {
+      en: "07:00 AM - 05:00 PM (Monday - Saturday)",
+      te: "ఉదయం 07:00 - సాయంత్రం 05:00 (సోమ - శని)",
+      hi: "सुबह 07:00 - शाम 05:00 (सोमवार - शनिवार)"
+    },
+    facilities: [
+      { en: "Free boarding, lodging and books", te: "ఉచిత భోజన వసతి మరియు పుస్తకాలు", hi: "निःशुल्क भोजन, आवास और पुस्तकें" },
+      { en: "Vocational training & skill development", te: "వృత్తి విద్యా శిక్షణ & నైపుణ్యాభివృద్ధి", hi: "व्यावसायिक प्रशिक्षण और कौशल विकास" }
+    ],
+    establishedYear: "2008"
+  },
+  {
+    id: "sch-7",
+    name: {
+      en: "Bugga Rameswara College",
+      te: "బుగ్గ రామేశ్వర కాలేజీ",
+      hi: "बुग्गा रामेश्वर कॉलेज"
+    },
+    schoolName: {
+      en: "Bugga Rameswara Junior & Degree College",
+      te: "బుగ్గ రామేశ్వర జూనియర్ & డిగ్రీ కాలేజీ",
+      hi: "बुग्गा रामेश्वर जूनियर और डिग्री कॉलेज"
+    },
+    subject: {
+      en: "Higher Secondary & Under-Graduate Education",
+      te: "హయ్యర్ సెకండరీ & అండర్ గ్రాడ్యుయేట్ విద్యా సంస్థ",
+      hi: "उच्च माध्यमिक और स्नातक शिक्षा"
+    },
+    phone: "",
+    type: "school",
+    address: {
+      en: "Bugga Rameswara Temple Road, Orvakal",
+      te: "బుగ్గ రామేశ్వర ఆలయ రోడ్, ఓర్వకల్లు",
+      hi: "बुग्गा रामेश्वर मंदिर रोड, ओरवाकल"
+    },
+    principal: {
+      en: "Principal",
+      te: "ప్రిన్సిపాల్",
+      hi: "प्राचार्य"
+    },
+    timings: {
+      en: "07:00 AM - 05:00 PM (Monday - Saturday)",
+      te: "ఉదయం 07:00 - సాయంత్రం 05:00 (సోమ - శని)",
+      hi: "सुबह 07:00 - शाम 05:00 (सोमवार - शनिवार)"
+    },
+    facilities: [
+      { en: "Science laboratories & library room", te: "సైన్స్ లాబొరేటరీలు మరియు లైబ్రరీ గది", hi: "विज्ञान प्रयोगशालाएं और पुस्तकालय कक्ष" },
+      { en: "Sports arena & computer setup", te: "క్రీడా మైదానం మరియు కంప్యూటర్ సదుపాయం", hi: "खेल का मैदान और कंप्यूटर सेटअप" }
+    ],
+    establishedYear: "2012"
+  },
+  {
+    id: "sch-8",
+    name: {
+      en: "Govt Girls Hostel",
+      te: "ప్రభుత్వ బాలికల వసతి గృహం",
+      hi: "सरकारी बालिका छात्रावास"
+    },
+    schoolName: {
+      en: "Govt Girls Hostel, Orvakal",
+      te: "ప్రభుత్వ బాలికల వసతి గృహం, ఓర్వకల్లు",
+      hi: "सरकारी बालिका छात्रावास, ओरवाकल"
+    },
+    subject: {
+      en: "Residential facility for school/college girls",
+      te: "పాఠశాల మరియు కాలేజీ విద్యార్థినులకు వసతి సౌకర్యం",
+      hi: "स्कूल और कॉलेज की छात्राओं के लिए आवासीय सुविधा"
+    },
+    phone: "",
+    type: "school",
+    address: {
+      en: "Mandal Office Road, Orvakal",
+      te: "మండల కార్యాలయ రోడ్, ఓర్వకల్లు",
+      hi: "मंडल कार्यालय रोड, ओरवाकल"
+    },
+    principal: {
+      en: "Hostel Warden",
+      te: "వసతి గృహ వార్డెన్",
+      hi: "छात्रावास वार्डन"
+    },
+    timings: {
+      en: "07:00 AM - 05:00 PM (Monday - Saturday)",
+      te: "ఉదయం 07:00 - సాయంత్రం 05:00 (సోమ - శని)",
+      hi: "सुबह 07:00 - शाम 05:00 (सोमवार - शनिवार)"
+    },
+    facilities: [
+      { en: "Free accommodation & hygienic food", te: "ఉచిత వసతి మరియు రుచికరమైన భోజనం", hi: "निःशुल्क आवास और स्वच्छ भोजन" },
+      { en: "Study room & 24/7 security", te: "స్టడీ రూమ్ మరియు 24/7 భద్రత", hi: "अध्ययन कक्ष और 24/7 सुरक्षा" }
     ],
     establishedYear: "1985"
   }

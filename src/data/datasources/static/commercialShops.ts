@@ -26,8 +26,8 @@ export const commercialShops: CommercialShop[] = [
   {
     id: "shp-rest-3",
     category: "restaurant",
-    name: { en: "HB Restaurant", te: "హెచ్‌బి రెస్టారెంట్", hi: "एचबी रेस्तरां" },
-    owner: { en: "H. Bhaskar", te: "హెచ్. భాస్కర్", hi: "एच. भास्कर" },
+    name: { en: "H8 Restaurant", te: "హెచ్8 రెస్టారెంట్", hi: "एच8 रेस्तरां" },
+    owner: { en: "H8 Group", te: "హెచ్8 గ్రూప్", hi: "एच8 ग्रुप" },
     phone: "",
     timing: { en: "09:30 AM - 08:30 PM", te: "ఉదయం 09:30 - రాత్రి 08:30", hi: "सुबह 09:30 - रात 08:30" },
     location: { en: "National Highway, Orvakal, Kurnool, Andhra Pradesh 518010", te: "జాతీయ రహదారి, ఓర్వకల్లు, కర్నూలు, ఆంధ్రప్రదేశ్ 518010", hi: "राष्ट्रीय राजमार्ग, ओरवाकल, कर्नूल, आंध्र प्रदेश 518010" }
@@ -281,14 +281,14 @@ export const commercialShops: CommercialShop[] = [
     owner: { en: "P. Karthik", te: "పి. కార్తీక్", hi: "पी. कार्तिक" },
     phone: "",
     timing: { en: "Open daily", te: "ప్రతిరోజు తెరవబడును", hi: "प्रतिदिन खुला है" },
-    location: { en: "MSPO+553, Main Bazar Road, Orvakal, Kurnool, Andhra Pradesh 518010", te: "MSPO+553, మెయిన్ బజార్ రోడ్, ఓర్వకల్లు, కర్నూలు, ఆంధ్రప్రదేశ్ 518010", hi: "MSPO+553, मुख्य बाजार रोड, ओरवाकल, कर्नूल, आंध्र प्रदेश 518010" }
+    location: { en: "MSPG+583, Main Bazar Road, Orvakal, Kurnool, Andhra Pradesh 518010", te: "MSPG+583, మెయిన్ బజార్ రోడ్, ఓర్వకల్లు, కర్నూలు, ఆంధ్రప్రదేశ్ 518010", hi: "MSPG+583, मुख्य बाजार रोड, ओरवाकल, कर्नूल, आंध्र प्रदेश 518010" }
   },
 
   // 15. Milk Dairies
   {
     id: "shp-dry-1",
     category: "dairy",
-    name: { en: "Basha Milk Parlour", te: "బాషా మిల్క్ పార్లర్", hi: "बाशा मिल्क पार्लर" },
+    name: { en: "Bash Milk Parlour", te: "బాష్ మిల్క్ పార్లర్", hi: "बैश मिल्क पार्लर" },
     owner: { en: "S. Basha", te: "ఎస్. బాషా", hi: "एस. बाशा" },
     phone: "",
     timing: { en: "06:00 AM - 07:00 PM", te: "ఉదయం 06:00 - సాయంత్రం 07:00", hi: "सुबह 06:00 - शाम 07:00" },
@@ -335,8 +335,8 @@ export const commercialShops: CommercialShop[] = [
   {
     id: "shp-wtr-3",
     category: "water-supplier",
-    name: { en: "Gnana Mineral Water", te: "జ్ఞాన మినరల్ వాటర్", hi: "ज्ञान मिनरल वाटर" },
-    owner: { en: "K. Gnaneshwar", te: "కె. జ్ఞానేశ్వర్", hi: "के. ज्ञानेश्वर" },
+    name: { en: "Grama Mineral Water", te: "గ్రామ మినరల్ వాటర్", hi: "ग्राम मिनरल वाटर" },
+    owner: { en: "K. Grama", te: "కె. గ్రామ", hi: "के. ग्राम" },
     phone: "",
     timing: { en: "06:00 AM - 08:00 PM", te: "ఉదయం 06:00 - రాత్రి 08:00", hi: "सुबह 06:00 - रात 08:00" },
     location: { en: "Main Bazar Route, Orvakal, Kurnool, Andhra Pradesh 518010", te: "మెయిన్ బజార్ రోడ్, ఓర్వకల్లు, కర్నూలు, ఆంధ్రప్రదేశ్ 518010", hi: "मुख्य बाजार मार्ग, ओरवाकल, कर्नूल, आंध्र प्रदेश 518010" }
@@ -357,8 +357,8 @@ export const commercialShops: CommercialShop[] = [
   {
     id: "shp-pest-1",
     category: "pesticide",
-    name: { en: "Gromor Agro", te: "గ్రోమోర్ ఆగ్రో", hi: "ग्रोमोर एग्रो" },
-    owner: { en: "Gromor Fertilizer Group", te: "గ్రోమోర్ సంఘం", hi: "ग्रोमोर फर्टिलाइजर ग्रुप" },
+    name: { en: "Gromore", te: "గ్రోమోర్", hi: "ग्रोमोर" },
+    owner: { en: "Gromore Group", te: "గ్రోమోర్ గ్రూప్", hi: "ग्रोमोर ग्रुप" },
     phone: "",
     timing: { en: "09:00 AM - 09:00 PM", te: "ఉదయం 09:00 - రాత్రి 09:00", hi: "सुबह 09:00 - रात 09:00" },
     location: { en: "Main route, Orvakal, Kurnool, Andhra Pradesh 518010", te: "మెయిన్ రూట్, ఓర్వకల్లు, కర్నూలు, ఆంధ్రప్రదేశ్ 518010", hi: "मुख्य मार्ग, ओरवाकल, कर्नूल, आंध्र प्रदेश 518010" }
@@ -366,7 +366,7 @@ export const commercialShops: CommercialShop[] = [
   {
     id: "shp-pest-2",
     category: "pesticide",
-    name: { en: "Kissan Agrimart", te: "కిసాన్ అగ్రిమార్ట్", hi: "किसान एग्रीमार्ट" },
+    name: { en: "kissan agrimart", te: "కిస్సాన్ అగ్రిమార్ట్", hi: "किसान एग्रीमार्ट" },
     owner: { en: "K. R. Rao", te: "కె. ఆర్. రావు", hi: "के. आर. राव" },
     phone: "",
     timing: { en: "09:00 AM - 09:00 PM", te: "ఉదయం 09:00 - రాత్రి 09:00", hi: "सुबह 09:00 - रात 09:00" },
@@ -375,7 +375,7 @@ export const commercialShops: CommercialShop[] = [
   {
     id: "shp-pest-3",
     category: "pesticide",
-    name: { en: "Kranthi Grama Abhivridhi - Rythu Pathekam", te: "క్రాంతి గ్రామ అభివృద్ధి - రైతు పథకం", hi: "क्रांति ग्राम अभिवृद्धि - रायथू पथेकम" },
+    name: { en: "Kranthe Grama Abhivridhi - Rythu Pathakam", te: "క్రాంతే గ్రామ అభివృద్ధి - రైతు పథకం", hi: "क्रांते ग्राम अभिवृद्धि - रायथू पथाकम" },
     owner: { en: "Rythu Society Coordinator", te: "రైతు సంఘ నిర్వాహకులు", hi: "रायथू सोसायटी समन्वयक" },
     phone: "",
     timing: { en: "09:00 AM - 09:00 PM", te: "ఉదయం 09:00 - రాత్రి 09:00", hi: "सुबह 09:00 - रात 09:00" },

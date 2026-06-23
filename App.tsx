@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, ScrollView, Linking, Animated, Image, Platform } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, ScrollView, Linking, Animated, Image, Platform, StatusBar as RNStatusBar } from 'react-native';
 import { LayoutDashboard, Building2, Sprout, Home, Briefcase, Bell, Moon, Sun, Phone, ShieldAlert, X } from 'lucide-react-native';
 
 // State & Contexts
@@ -471,6 +471,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: Platform.OS === 'android' ? RNStatusBar.currentHeight : 0,
   },
   header: {
     flexDirection: 'row',

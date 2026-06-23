@@ -222,76 +222,151 @@ export const committees: Committee[] = [
   {
     id: "com-1",
     name: {
-      en: "Water & Sanitation Committee",
-      te: "నీరు & పారిశుద్ధ్య కమిటీ",
-      hi: "जल और स्वच्छता समिति"
+      en: "Temple Committee",
+      te: "ఆలయ కమిటీ",
+      hi: "मंदिर समिति"
     },
     president: {
-      en: "Mr. B. Srinivasa Rao (Sarpanch)",
-      te: "శ్రీ బి. శ్రీనివాసరావు (సర్పంచ్)",
-      hi: "श्री बी. श्रीनिवास राव (सरपंच)"
+      en: "",
+      te: "",
+      hi: ""
     },
-    membersCount: 11,
-    phone: "+91 9440123456",
+    membersCount: 15,
+    phone: "",
     purpose: {
-      en: "Overseeing safe drinking water distribution, maintaining borewells, and village cleanliness drives.",
-      te: "సురక్షిత తాగునీటి సరఫరా, బోరుబావుల నిర్వహణ మరియు పారిశుద్ధ్య కార్యక్రమాల పర్యవేక్షణ.",
-      hi: "सुरक्षित पेयजल वितरण की देखरेख, बोरवेल का रख-रखाव और ग्राम स्वच्छता अभियान।"
+      en: "Manages village temple funds, festivals, and infrastructure maintenance.",
+      te: "గ్రామ దేవాలయాల నిధులు, ఉత్సవాలు మరియు మౌలిక సదుపాయాల పర్యవేక్షణ.",
+      hi: "ग्राम मंदिर निधि, उत्सवों और बुनियादी ढांचे के रख-रखाव का प्रबंधन।"
     },
     meetings: {
-      en: "First Monday of every month @ Gram Panchayat Office",
-      te: "ప్రతి నెల మొదటి సోమవారం @ గ్రామ పంచాయతీ కార్యాలయం",
-      hi: "हर महीने का पहला सोमवार @ ग्राम पंचायत कार्यालय"
+      en: "First Sunday of every month",
+      te: "ప్రతి నెల మొదటి ఆదివారం",
+      hi: "हर महीने का पहला रविवार"
     }
   },
   {
     id: "com-2",
     name: {
-      en: "Village Education Committee",
-      te: "గ్రామ విద్యా కమిటీ (VEC)",
-      hi: "ग्राम शिक्षा समिति"
+      en: "Watershed Committee",
+      te: "వాటర్ షెడ్ కమిటీ",
+      hi: "वाटरशेड समिति"
     },
     president: {
-      en: "Mrs. K. Lakshmi Prasad (Sec)",
-      te: "శ్రీమతి కె. లక్ష్మీ ప్రసాద్",
-      hi: "श्रीमती के. लक्ष्मी प्रसाद"
+      en: "",
+      te: "",
+      hi: ""
     },
-    membersCount: 9,
-    phone: "+91 9440654321",
+    membersCount: 12,
+    phone: "",
     purpose: {
-      en: "Monitoring school attendance, mid-day meals quality, and school infrastructure maintenance.",
-      te: "పాఠశాలల హాజరు శాతం పెంచడం, మధ్యాహ్న భోజన నాణ్యత పరిశీలన మరియు మౌలిక సదుపాయాల పర్యవేక్షణ.",
-      hi: "स्कूल उपस्थिति की निगरानी, ​​मध्याह्न भोजन की गुणवत्ता और स्कूल के बुनियादी ढांचे का रख-रखाव।"
+      en: "Managing local water resources, rainwater harvesting, and soil conservation.",
+      te: "స్థానిక నీటి వనరుల నిర్వహణ, వర్షపు నీటి నిల్వ మరియు నేల సంరక్షణ.",
+      hi: "स्थानीय जल संसाधनों, वर्षा जल संचयन और मृदा संरक्षण का प्रबंधन।"
     },
     meetings: {
-      en: "Second Saturday of every month @ ZPHS School Library",
-      te: "ప్రతి నెల రెండవ శనివారం @ ZPHS స్కూల్ లైబ్రరీ",
-      hi: "हर महीने का दूसरा शनिवार @ ZPHS स्कूल पुस्तकालय"
+      en: "First Monday of every month",
+      te: "ప్రతి నెల మొదటి సోమవారం",
+      hi: "हर महीने का पहला सोमवार"
     }
   },
   {
     id: "com-3",
     name: {
-      en: "Agricultural Advisory Board",
-      te: "వ్యవసాయ సలహా మండలి",
-      hi: "कृषि सलाहकार बोर्ड"
+      en: "Guard (Kaavali) Committee",
+      te: "కావలి కమిటీ",
+      hi: "कावली समिति (ग्राम रक्षक)"
     },
     president: {
-      en: "Mr. T. Veerabhadra Reddy",
-      te: "శ్రీ టి. వీరభద్ర రెడ్డి",
-      hi: "श्री टी. वीरभद्र रेड्डी"
+      en: "",
+      te: "",
+      hi: ""
     },
-    membersCount: 15,
-    phone: "+91 9440812344",
+    membersCount: 18,
+    phone: "",
     purpose: {
-      en: "Advising farmers on crop selection, pest control, coordinating with Rythu Bharosa Kendram for seeds and fertilizers.",
-      te: "పంటల ఎంపిక, తెగుళ్ల నివారణ మరియు విత్తనాలు, ఎరువుల సరఫరా కోసం రైతు భరోసా కేంద్రంతో సమన్వయం.",
-      hi: "फसल चयन, कीट नियंत्रण पर किसानों को सलाह देना, बीजों और उर्वरकों के लिए रायथू भरोसा केंद्र के साथ समन्वय करना।"
+      en: "Ensuring village safety, patrolling during nights, and coordination with local police.",
+      te: "గ్రామ రక్షణ పర్యవేక్షణ, రాత్రి సమయాల్లో గస్తీ మరియు స్థానిక పోలీసులతో సమన్వయం.",
+      hi: "ग्राम सुरक्षा सुनिश्चित करना, रात में गश्त करना और स्थानीय पुलिस के साथ समन्वय।"
     },
     meetings: {
-      en: "Prior to Kharif & Rabi seasons @ Rythu Bharosa Kendram",
-      te: "ఖరీఫ్ & రబీ సీజన్ల ప్రారంభానికి ముందు @ రైతు భరోసా కేంద్రం",
-      hi: "खरीफ और रबी सीजन से पहले @ रायथू भरोसा केंद्र"
+      en: "Bi-weekly on Saturdays",
+      te: "ప్రతి రెండు వారాలకు ఒకసారి శనివారం",
+      hi: "हर दो सप्ताह में शनिवार को"
+    }
+  },
+  {
+    id: "com-4",
+    name: {
+      en: "Cricket Club - Orvakallu",
+      te: "క్రికెట్ క్లబ్ - ఓర్వకల్లు",
+      hi: "क्रिकेट क्लब - ओरवाकल"
+    },
+    president: {
+      en: "",
+      te: "",
+      hi: ""
+    },
+    membersCount: 22,
+    phone: "",
+    purpose: {
+      en: "Organizing local cricket tournaments, training youth, and managing sports equipment.",
+      te: "స్థానిక క్రికెట్ టోర్నమెంట్ల నిర్వహణ, యువతకు శిక్షణ మరియు క్రీడా పరికరాల పర్యవేక్షణ.",
+      hi: "स्थानीय क्रिकेट टूर्नामेंट आयोजित करना, युवाओं को प्रशिक्षण देना और खेल उपकरणों का प्रबंधन।"
+    },
+    meetings: {
+      en: "Every Sunday afternoon",
+      te: "ప్రతి ఆదివారం మధ్యాహ్నం",
+      hi: "हर रविवार दोपहर"
+    }
+  },
+  {
+    id: "com-5",
+    name: {
+      en: "Sports Club - Orvakallu",
+      te: "స్పోర్ట్స్ క్లబ్ - ఓర్వకల్లు",
+      hi: "स्पोर्ट्स क्लब - ओरवाकल"
+    },
+    president: {
+      en: "",
+      te: "",
+      hi: ""
+    },
+    membersCount: 25,
+    phone: "",
+    purpose: {
+      en: "Promoting physical fitness, athletics, and traditional sports in the community.",
+      te: "గ్రామంలో శారీరక దృఢత్వం, అథ్లెటిక్స్ మరియు సాంప్రదాయ క్రీడలను ప్రోత్సహించడం.",
+      hi: "समुदाय में शारीरिक फिटनेस, एथलेटिक्स और पारंपरिक खेलों को बढ़ावा देना।"
+    },
+    meetings: {
+      en: "Monthly meetings on second Sunday",
+      te: "ప్రతి నెల రెండవ ఆదివారం సమావేశం",
+      hi: "हर महीने के दूसरे रविवार को बैठक"
+    }
+  },
+  {
+    id: "com-6",
+    name: {
+      en: "Education/Library Club - Orvakallu",
+      te: "విద్యా/గ్రంథాలయ క్లబ్ - ఓర్వకల్లు",
+      hi: "शिक्षा/पुस्तकालय क्लब - ओरवाकल"
+    },
+    president: {
+      en: "",
+      te: "",
+      hi: ""
+    },
+    membersCount: 10,
+    phone: "",
+    purpose: {
+      en: "Managing the village library, promoting literacy, and conducting study circles for students.",
+      te: "గ్రామ గ్రంథాలయ నిర్వహణ, అక్షరాస్యత పెంపుదల మరియు విద్యార్థులకు స్టడీ సర్కిల్స్ నిర్వహణ.",
+      hi: "ग्राम पुस्तकालय का प्रबंधन, साक्षरता को बढ़ावा देना और छात्रों के लिए अध्ययन मंडली चलाना।"
+    },
+    meetings: {
+      en: "First Saturday of every month",
+      te: "ప్రతి నెల మొదటి శనివారం",
+      hi: "हर महीने का पहला शनिवार"
     }
   }
 ];

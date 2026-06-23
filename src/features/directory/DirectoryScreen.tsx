@@ -655,8 +655,9 @@ export const DirectoryScreen: React.FC<DirectoryScreenProps> = ({ initialSubTab,
             <View style={[styles.listContainer, { marginTop: 8 }]}>
               {filtered.map((scheme) => {
                 const isExpanded = expandedSchemeId === scheme.id;
-                const provColor = providerColors[scheme.type] || '#0D7A5F';
-                const provLabel = providerLabels[scheme.type] || scheme.type;
+                const schemeType = scheme.type || 'state';
+                const provColor = providerColors[schemeType] || '#0D7A5F';
+                const provLabel = providerLabels[schemeType] || schemeType;
                 const emoji = schemeEmojis[scheme.category] || schemeEmojis.default;
                 return (
                   <TouchableOpacity
@@ -802,9 +803,15 @@ export const DirectoryScreen: React.FC<DirectoryScreenProps> = ({ initialSubTab,
                 <View style={styles.cardHeaderRow}>
                   <View>
                     <Text style={[styles.officerName, { color: colors.foreground }]}>{getTxt(comm.name)}</Text>
-                    <Text style={[styles.officerRole, { color: colors.primary }]}>President: {getTxt(comm.president)}</Text>
+                    {getTxt(comm.president) ? (
+                      <Text style={[styles.officerRole, { color: colors.primary }]}>President: {getTxt(comm.president)}</Text>
+                    ) : (
+                      <Text style={[styles.officerRole, { color: colors.mutedForeground, fontStyle: 'italic', fontSize: 10, marginTop: 2 }]}>
+                        {lang === 'te' ? "సంప్రదింపు వివరాలు త్వరలో నవీకరించబడతాయి" : lang === 'hi' ? "संपर्क विवरण जल्द ही अपडेट किए जाएंगे" : "Contact details will be updated soon"}
+                      </Text>
+                    )}
                   </View>
-                  <AudioButton text={`${getTxt(comm.name)}. President is ${getTxt(comm.president)}`} />
+                  <AudioButton text={getTxt(comm.president) ? `${getTxt(comm.name)}. President is ${getTxt(comm.president)}` : getTxt(comm.name)} />
                 </View>
                 <View style={styles.divider} />
                 <View style={styles.cardDetails}>
@@ -812,10 +819,12 @@ export const DirectoryScreen: React.FC<DirectoryScreenProps> = ({ initialSubTab,
                   <Text style={[styles.detailText, { color: colors.mutedForeground, marginTop: 4 }]}>Purpose: <Text style={{ color: colors.foreground }}>{getTxt(comm.purpose)}</Text></Text>
                   <Text style={[styles.detailText, { color: colors.mutedForeground, marginTop: 4 }]}>Meetings: <Text style={{ color: colors.foreground }}>{getTxt(comm.meetings)}</Text></Text>
                 </View>
-                <TouchableOpacity style={[styles.callBtn, { backgroundColor: colors.primary }]} onPress={() => handleCall(comm.phone)}>
-                  <Phone size={14} color="#ffffff" />
-                  <Text style={styles.callBtnText}>Contact Committee President</Text>
-                </TouchableOpacity>
+                {comm.phone ? (
+                  <TouchableOpacity style={[styles.callBtn, { backgroundColor: colors.primary }]} onPress={() => handleCall(comm.phone)}>
+                    <Phone size={14} color="#ffffff" />
+                    <Text style={styles.callBtnText}>Contact Committee President</Text>
+                  </TouchableOpacity>
+                ) : null}
               </GlassCard>
             ))}
         </View>

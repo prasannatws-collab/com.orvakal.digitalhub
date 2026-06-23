@@ -45,6 +45,7 @@ interface DashboardScreenProps {
   onAirportClick: () => void;
   onScroll?: (event: any) => void;
   onPrivacyClick?: () => void;
+  onSafetyClick?: () => void;
 }
 
 // Persona tab definitions
@@ -233,6 +234,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
   onAirportClick,
   onScroll,
   onPrivacyClick,
+  onSafetyClick,
 }) => {
   const { t, getTxt, lang } = useLanguage();
   const { colors, theme }   = useTheme();
@@ -811,11 +813,19 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
           <Text style={[styles.footerText, { color: colors.mutedForeground }]}>
             © 2026 Orvakal Gram Panchayat. All Rights Reserved.
           </Text>
-          <TouchableOpacity onPress={onPrivacyClick}>
-            <Text style={[styles.footerPrivacyLink, { color: colors.primary }]}>
-              {t.privacyPolicy}
-            </Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', gap: 16, alignItems: 'center', marginTop: 4 }}>
+            <TouchableOpacity onPress={onPrivacyClick}>
+              <Text style={[styles.footerPrivacyLink, { color: colors.primary }]}>
+                {t.privacyPolicy}
+              </Text>
+            </TouchableOpacity>
+            <View style={{ width: 1, height: 12, backgroundColor: colors.mutedForeground, opacity: 0.3 }} />
+            <TouchableOpacity onPress={onSafetyClick}>
+              <Text style={[styles.footerPrivacyLink, { color: colors.primary }]}>
+                {t.safetyPolicy}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ScrollView>
     </>

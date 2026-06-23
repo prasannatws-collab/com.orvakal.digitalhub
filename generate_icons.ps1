@@ -29,7 +29,7 @@ for ($x = 0; $x -lt $logoBmp.Width; $x++) {
 Write-Output "Loaded logo.png and processed fuzzy transparency: Width=$($logoBmp.Width), Height=$($logoBmp.Height)"
 
 # Helper function to create image
-function Create-ScaledImage {
+function New-ScaledImage {
     param (
         [string]$destName,
         [int]$targetSize,
@@ -113,16 +113,16 @@ $bgBmp.Dispose()
 Write-Output "Saved android-icon-background.png successfully."
 
 # 2. icon.png (solid light blue background + centered logo scaled to 665)
-Create-ScaledImage "icon.png" 665 "#E6F4FE" $false
+New-ScaledImage "icon.png" 665 "#E6F4FE" $false
 
 # 3. android-icon-foreground.png (transparent background + centered logo scaled to 614)
-Create-ScaledImage "android-icon-foreground.png" 614 "" $false
+New-ScaledImage "android-icon-foreground.png" 614 "" $false
 
 # 4. android-icon-monochrome.png (transparent background + centered monochrome logo scaled to 614)
-Create-ScaledImage "android-icon-monochrome.png" 614 "" $true
+New-ScaledImage "android-icon-monochrome.png" 614 "" $true
 
 # 5. splash-icon.png (transparent background + centered logo scaled to 460)
-Create-ScaledImage "splash-icon.png" 460 "" $false
+New-ScaledImage "splash-icon.png" 460 "" $false
 
 # Dispose original logo
 $logoBmp.Dispose()

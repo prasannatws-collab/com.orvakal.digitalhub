@@ -207,7 +207,9 @@ export const translations = {
     // Insights Renaming
     insightsTitle: "Orvakal Industrial Hub Insights",
     privacyPolicy: "Privacy Policy",
-    privacyTitle: "Privacy & Data Usage"
+    privacyTitle: "Privacy & Data Usage",
+    safetyPolicy: "Safety Standards (CSAE)",
+    safetyTitle: "Safety & Child Protection"
   },
   te: {
     title: "ఓర్వకల్లు డిజిటల్ హబ్",
@@ -417,7 +419,9 @@ export const translations = {
     // Insights Renaming
     insightsTitle: "ఓర్వకల్లు పారిశ్రామిక హబ్ అంతర్దృష్టులు",
     privacyPolicy: "గోప్యతా విధానం",
-    privacyTitle: "గోప్యత & డేటా వినియోగం"
+    privacyTitle: "గోప్యత & డేటా వినియోగం",
+    safetyPolicy: "భద్రతా ప్రమాణాలు (CSAE)",
+    safetyTitle: "భద్రత & బాలల సంరక్షణ"
   },
   hi: {
     title: "ओरवाकल डिजिटल हब",
@@ -627,6 +631,8 @@ export const translations = {
     // Insights Renaming
     insightsTitle: "ओरवाकल औद्योगिक हब अंतर्दृष्टि",
     privacyPolicy: "गोपनीयता नीति",
-    privacyTitle: "गोपनीयता और डेटा उपयोग"
+    privacyTitle: "गोपनीयता और डेटा उपयोग",
+    safetyPolicy: "सुरक्षा मानक (CSAE)",
+    safetyTitle: "सुरक्षा और बाल संरक्षण"
   }
 };

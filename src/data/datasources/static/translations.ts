@@ -208,8 +208,14 @@ export const translations = {
     insightsTitle: "Orvakal Industrial Hub Insights",
     privacyPolicy: "Privacy Policy",
     privacyTitle: "Privacy & Data Usage",
-    safetyPolicy: "Safety Standards (CSAE)",
-    safetyTitle: "Safety & Child Protection"
+    safetyPolicy: "Safety Policy",
+    safetyTitle: "Safety & Child Protection",
+    govtDisclaimer: "Disclaimer: This app is an independent, community-driven information portal. It does NOT represent any government entity or official authority. The government-related information, contact details, and schemes displayed herein are aggregated from public sources for reference only. Please verify critical details directly on official government websites.",
+    govtDisclaimerShort: "This app does not represent a government entity.",
+    officialGovtSources: "Official Government Sources",
+    govtSourcesHelpText: "Please find the official government websites for the information and services referenced in this app:",
+    visitOfficialSite: "Visit Official Website",
+    disclaimerTitle: "Disclaimer"
   },
   te: {
     title: "ఓర్వకల్లు డిజిటల్ హబ్",
@@ -420,8 +426,14 @@ export const translations = {
     insightsTitle: "ఓర్వకల్లు పారిశ్రామిక హబ్ అంతర్దృష్టులు",
     privacyPolicy: "గోప్యతా విధానం",
     privacyTitle: "గోప్యత & డేటా వినియోగం",
-    safetyPolicy: "భద్రతా ప్రమాణాలు (CSAE)",
-    safetyTitle: "భద్రత & బాలల సంరక్షణ"
+    safetyPolicy: "భద్రతా విధానం",
+    safetyTitle: "భద్రత & బాలల సంరక్షణ",
+    govtDisclaimer: "గమనిక: ఈ యాప్ స్వతంత్ర, స్వచ్ఛంద సమాచార పోర్టల్. ఇది ఏ ప్రభుత్వ విభాగానికి లేదా అధికారిక సంస్థకు ప్రాతినిధ్యం వహించదు. ఇందులో అందించిన ప్రభుత్వ సమాచారం, ఫోన్ నంబర్లు మరియు పథకాల వివరాలు కేవలం ప్రజల అవగాహన కోసం పబ్లిక్ డొమైన్ల నుండి సేకరించబడినవి. దయచేసి అధికారిక ప్రభుత్వ వెబ్‌సైట్లలో వీటిని ధృవీకరించుకోండి.",
+    govtDisclaimerShort: "ఈ యాప్ ప్రభుత్వ రంగానికి ప్రాతినిధ్యం వహించదు.",
+    officialGovtSources: "అధికారిక ప్రభుత్వ సమాచార వనరులు",
+    govtSourcesHelpText: "ఈ యాప్‌లో ప్రస్తావించబడిన సమాచారం మరియు సేవల కోసం అధికారిక ప్రభుత్వ వెబ్‌సైట్లు ఇక్కడ ఉన్నాయి:",
+    visitOfficialSite: "అధికారిక వెబ్‌సైట్ సందర్శించండి",
+    disclaimerTitle: "గమనిక / నిరాకరణ"
   },
   hi: {
     title: "ओरवाकल डिजिटल हब",
@@ -632,7 +644,13 @@ export const translations = {
     insightsTitle: "ओरवाकल औद्योगिक हब अंतर्दृष्टि",
     privacyPolicy: "गोपनीयता नीति",
     privacyTitle: "गोपनीयता और डेटा उपयोग",
-    safetyPolicy: "सुरक्षा मानक (CSAE)",
-    safetyTitle: "सुरक्षा और बाल संरक्षण"
+    safetyPolicy: "सुरक्षा नीति",
+    safetyTitle: "सुरक्षा और बाल संरक्षण",
+    govtDisclaimer: "अस्वीकरण: यह ऐप एक स्वतंत्र, सामुदायिक सूचना पोर्टल है। यह किसी भी सरकारी संस्था या आधिकारिक प्राधिकरण का प्रतिनिधित्व नहीं करता है। यहां प्रदर्शित सरकारी जानकारी, संपर्क विवरण और योजनाएं केवल संदर्भ के लिए सार्वजनिक स्रोतों से संकलित की गई हैं। कृपया आधिकारिक सरकारी वेबसाइटों पर विवरणों की पुष्टि करें।",
+    govtDisclaimerShort: "यह ऐप किसी सरकारी संस्था का प्रतिनिधित्व नहीं करता है।",
+    officialGovtSources: "आधिकारिक सरकारी सूचना स्रोत",
+    govtSourcesHelpText: "इस ऐप में संदर्भित जानकारी और सेवाओं के लिए आधिकारिक सरकारी वेबसाइटें निम्नलिखित हैं:",
+    visitOfficialSite: "आधिकारिक वेबसाइट पर जाएं",
+    disclaimerTitle: "अस्वीकरण"
   }
 };

@@ -44,16 +44,16 @@ export const privacySections: PrivacySection[] = [
   },
   {
     id: "audio",
-    emoji: "🎙️",
+    emoji: "🔊",
     title: {
-      en: "Microphone & Accessibility",
-      te: "మైక్రోఫోన్ & యాక్సెసిబిలిటీ",
-      hi: "माइक्रोफ़ोन और एक्सेसिबिलिटी"
+      en: "Audio & Accessibility",
+      te: "ఆడియో & యాక్సెసిబిలిటీ",
+      hi: "ऑडियो और एक्सेसिबिलिटी"
     },
     content: {
-      en: "To assist rural users and provide text-to-speech audio reader support in English, Telugu, and Hindi, the app requests microphone permissions. Audio inputs are processed strictly on-device and are never recorded, saved, or uploaded.",
-      te: "గ్రామీణ వినియోగదారుల సౌలభ్యం కోసం ఇంగ్లీష్, తెలుగు మరియు హిందీలలో ఆడియో రీడర్ మరియు వాయిస్ అసిస్టెన్స్ ఫీచర్లకు మద్దతు ఇవ్వడానికి యాప్ మైక్రోఫోన్ అనుమతిని అడుగుతుంది. ఆడియో ప్రాసెసింగ్ పరికరంలోనే జరుగుతుంది మరియు రికార్డ్ చేయబడదు లేదా అప్‌లోడ్ చేయబడదు.",
-      hi: "ग्रामीण उपयोगकर्ताओं की सहायता करने और अंग्रेजी, तेलुगु और हिंदी में टेक्स्ट-टू-स्पीच ऑडियो रीडर सहायता प्रदान करने के लिए, ऐप माइक्रोफ़ोन अनुमतियों का अनुरोध करता है। ऑडियो केवल आपके डिवाइस पर संसाधित किया जाता है और कभी भी रिकॉर्ड, सहेजा या अपलोड नहीं किया जाता है।"
+      en: "To assist rural users and provide text-to-speech audio support in English, Telugu, and Hindi, the app reads information aloud using native engines. This is a playback-only feature; the app does NOT request, access, or require any microphone or recording permissions.",
+      te: "గ్రామీణ వినియోగదారుల సౌలభ్యం కోసం ఇంగ్లీష్, తెలుగు మరియు హిందీలలో సమాచారాన్ని చదివి వినిపించడానికి యాప్ స్థానిక ఆడియో ఇంజిన్‌లను ఉపయోగిస్తుంది. ఇది కేవలం ప్లేబ్యాక్ ఫీచర్ మాత్రమే; యాప్ మైక్రోఫోన్ లేదా రికార్డింగ్ అనుమతులను అడగదు మరియు ఉపయోగించదు.",
+      hi: "ग्रामीण उपयोगकर्ताओं की सहायता करने और अंग्रेजी, तेलुगु और हिंदी में टेक्स्ट-टू-स्पीच सहायता प्रदान करने के लिए, ऐप जानकारी को जोर से पढ़ता है। यह केवल प्लेबैक सेवा है; ऐप किसी भी माइक्रोफ़ोन या रिकॉर्डिंग अनुमति का अनुरोध या उपयोग नहीं करता है।"
     }
   },
   {
@@ -93,9 +93,9 @@ export const privacySections: PrivacySection[] = [
       hi: "आपका नियंत्रण"
     },
     content: {
-      en: "You can turn off location and microphone permissions at any time through your device settings. Disabling location will fall back to alphabetical list sorting, and the app will continue to remain fully functional.",
-      te: "మీరు మీ మొబైల్ సెట్టింగ్స్ ద్వారా ఎప్పుడైనా స్థాన మరియు మైక్రోఫోన్ అనుమతులను నిలిపివేయవచ్చు. స్థాన అనుమతి లేకపోతే జాబితాలు వర్ణమాల క్రమంలో అమర్చబడతాయి మరియు యాప్ యధావిధిగా పనిచేస్తుంది.",
-      hi: "आप अपने डिवाइस की सेटिंग के माध्यम से किसी भी समय स्थान और माइक्रोफ़ोन अनुमतियों को बंद कर सकते हैं। स्थान को अक्षम करने पर सूचियां वर्णानुक्रम में व्यवस्थित होंगी, और ऐप पूरी तरह से काम करना जारी रखेगा।"
+      en: "You can turn off location permissions at any time through your device settings. Disabling location will fall back to alphabetical list sorting, and the app will continue to remain fully functional.",
+      te: "మీరు మీ మొబైల్ సెట్టింగ్స్ ద్వారా ఎప్పుడైనా స్థాన అనుమతులను నిలిపివేయవచ్చు. స్థాన అనుమతి లేకపోతే జాబితాలు వర్ణమాల క్రమంలో అమర్చబడతాయి మరియు యాప్ యధావిధిగా పనిచేస్తుంది.",
+      hi: "आप अपने डिवाइस की सेटिंग के माध्यम से किसी भी समय स्थान अनुमतियों को बंद कर सकते हैं। स्थान को अक्षम करने पर सूचियां वर्णानुक्रम में व्यवस्थित होंगी, और ऐप पूरी तरह से काम करना जारी रखेगा।"
     }
   }
 ];

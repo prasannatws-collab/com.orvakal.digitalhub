@@ -1,6 +1,6 @@
-[Reflection.Assembly]::LoadWithPartialName("System.Drawing") | Out-Null
+Add-Type -AssemblyName System.Drawing
 
-$baseDir = "C:\Users\mlpkr\OneDrive\Desktop\Prasanna.Tws\Antigravity\orvakaldigitalhub"
+$baseDir = $PSScriptRoot
 $logoPath = "$baseDir\assets\logo.png"
 $assetsDir = "$baseDir\assets"
 
@@ -84,7 +84,7 @@ function New-ScaledImage {
 
     # Save
     if (Test-Path $destPath) {
-        Remove-Item $destPath -Force
+        [System.IO.File]::Delete($destPath)
     }
     $bmp.Save($destPath, [System.Drawing.Imaging.ImageFormat]::Png)
 
@@ -105,7 +105,7 @@ $bgColor = [System.Drawing.ColorTranslator]::FromHtml("#E6F4FE")
 $bgBrush = New-Object System.Drawing.SolidBrush $bgColor
 $bgG.FillRectangle($bgBrush, 0, 0, 1024, 1024)
 $bgDest = "$assetsDir\android-icon-background.png"
-if (Test-Path $bgDest) { Remove-Item $bgDest -Force }
+if (Test-Path $bgDest) { [System.IO.File]::Delete($bgDest) }
 $bgBmp.Save($bgDest, [System.Drawing.Imaging.ImageFormat]::Png)
 $bgBrush.Dispose()
 $bgG.Dispose()

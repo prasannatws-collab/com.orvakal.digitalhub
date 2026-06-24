@@ -4,6 +4,6 @@ export interface Coordinates {
 }
 
 export interface ILocationService {
-  getCurrentLocation(): Promise<Coordinates | null>;
+  getCurrentLocation(lang?: 'en' | 'te' | 'hi'): Promise<Coordinates | null>;
   calculateDistance(from: Coordinates, to: Coordinates): number; // distance in km
 }

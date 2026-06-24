@@ -57,7 +57,7 @@ export const FarmerScreen: React.FC<FarmerScreenProps> = ({ initialSubTab, onClo
   const requestGPSLocation = async () => {
     try {
       setIsLocating(true);
-      const coords = await locationService.getCurrentLocation();
+      const coords = await locationService.getCurrentLocation(lang);
       if (coords) {
         setUserCoords(coords);
       } else {
@@ -121,6 +121,30 @@ export const FarmerScreen: React.FC<FarmerScreenProps> = ({ initialSubTab, onClo
           <TouchableOpacity style={[styles.backBtn, { borderColor: colors.uniformPastelBorder, backgroundColor: colors.uniformPastelBg }]} onPress={onClose}>
             <Text style={[styles.backBtnText, { color: colors.uniformPastelText }]}>🏠 Dashboard</Text>
           </TouchableOpacity>
+        </View>
+
+        {/* GOVERNMENT NON-OFFICIAL DISCLAIMER BANNER */}
+        <View
+          style={[
+            styles.disclaimerCard,
+            {
+              backgroundColor: colors.uniformPastelBg,
+              borderColor: colors.uniformPastelBorder,
+              marginBottom: 14,
+            },
+          ]}
+        >
+          <Text style={[styles.disclaimerText, { color: colors.uniformPastelText, fontSize: 10.5, lineHeight: 15 }]}>
+            ⚠️ <Text style={{ fontWeight: 'bold' }}>{t.disclaimerTitle}:</Text> {t.govtDisclaimer}
+          </Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
+            <TouchableOpacity onPress={() => Linking.openURL('https://pmkisan.gov.in')} style={[styles.linkPill, { backgroundColor: `${colors.background}80`, borderColor: colors.uniformPastelBorder }]}>
+              <Text style={[styles.linkPillText, { color: colors.uniformPastelText }]}>pmkisan.gov.in ↗</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://kurnool.ap.gov.in')} style={[styles.linkPill, { backgroundColor: `${colors.background}80`, borderColor: colors.uniformPastelBorder }]}>
+              <Text style={[styles.linkPillText, { color: colors.uniformPastelText }]}>kurnool.ap.gov.in ↗</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         <View style={styles.menuGrid}>
@@ -418,6 +442,22 @@ export const FarmerScreen: React.FC<FarmerScreenProps> = ({ initialSubTab, onClo
         </View>
       )}
 
+      {/* Government Disclaimer in Subtabs */}
+      <View
+        style={[
+          styles.subTabDisclaimer,
+          {
+            backgroundColor: colors.uniformPastelBg,
+            borderColor: colors.uniformPastelBorder,
+            marginTop: 16,
+          },
+        ]}
+      >
+        <Text style={[styles.subTabDisclaimerText, { color: colors.uniformPastelText }]}>
+          ⚠️ <Text style={{ fontWeight: 'bold' }}>{t.disclaimerTitle}:</Text> {t.govtDisclaimerShort} (Sources: pmkisan.gov.in, kurnool.ap.gov.in)
+        </Text>
+      </View>
+
     </ScrollView>
   );
 };
@@ -629,5 +669,35 @@ const styles = StyleSheet.create({
   },
   staffRole: {
     fontSize: 10,
+  },
+  disclaimerCard: {
+    borderWidth: 1.5,
+    borderRadius: 14,
+    padding: 12,
+    marginVertical: 4,
+  },
+  disclaimerText: {
+    fontSize: 10.5,
+    lineHeight: 15,
+  },
+  linkPill: {
+    borderWidth: 1,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  linkPillText: {
+    fontSize: 9.5,
+    fontWeight: 'bold',
+  },
+  subTabDisclaimer: {
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
+  },
+  subTabDisclaimerText: {
+    fontSize: 9.5,
+    lineHeight: 14.5,
+    textAlign: 'center',
   },
 });

@@ -46,7 +46,7 @@ export const ServicesScreen: React.FC<ServicesScreenProps> = ({ initialCategory,
   const requestGPSLocation = async () => {
     try {
       setIsLocating(true);
-      const coords = await locationService.getCurrentLocation();
+      const coords = await locationService.getCurrentLocation(lang);
       if (coords) {
         setUserCoords(coords);
       } else {

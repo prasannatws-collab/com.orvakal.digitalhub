@@ -7,6 +7,7 @@ import {
   ScrollView,
   TextInput,
   Image,
+  Linking,
 } from 'react-native';
 
 import {
@@ -19,12 +20,16 @@ import {
   ChevronDown,
   Cpu,
   Sparkles,
+  Info,
+  ExternalLink,
 } from 'lucide-react-native';
 import { useLanguage } from '../../core/state/LanguageContext';
 import { useTheme } from '../../core/state/ThemeContext';
 import { useWeatherClock } from './hooks/useWeatherClock';
 import { GlassCard } from '../../core/components/GlassCard';
 import { AudioButton } from '../../core/components/AudioButton';
+import { CustomModal } from '../../core/components/CustomModal';
+import { govtSources } from '../../data/datasources/static/govtSourcesData';
 import { DI } from '../../core/di';
 import {
   getConditionTranslations,
@@ -50,11 +55,11 @@ interface DashboardScreenProps {
 
 // Persona tab definitions
 const PERSONA_TABS = [
-  { id: 'farmer',   icon: '🌾', label: { en: 'Farmer',   te: 'రైతు',       hi: 'किसान'    } },
-  { id: 'student',  icon: '🎓', label: { en: 'Student',  te: 'విద్యార్థి', hi: 'छात्र'    } },
-  { id: 'villager', icon: '🏡', label: { en: 'Villager', te: 'గ్రామీణుడు', hi: 'ग्रामीण'  } },
-  { id: 'visitor',  icon: '📖', label: { en: 'Visitor',  te: 'సందర్శకుడు', hi: 'पर्यटक'   } },
-  { id: 'official', icon: '💼', label: { en: 'Officials',te: 'అధికారి',    hi: 'अधिकारी' } },
+  { id: 'farmer', icon: '🌾', label: { en: 'Farmer', te: 'రైతు', hi: 'किसान' } },
+  { id: 'student', icon: '🎓', label: { en: 'Student', te: 'విద్యార్థి', hi: 'छात्र' } },
+  { id: 'villager', icon: '🏡', label: { en: 'Villager', te: 'గ్రామీణుడు', hi: 'ग्रामीण' } },
+  { id: 'visitor', icon: '📖', label: { en: 'Visitor', te: 'సందర్శకుడు', hi: 'पर्यटक' } },
+  { id: 'official', icon: '💼', label: { en: 'Officials', te: 'అధికారి', hi: 'अधिकारी' } },
 ];
 
 // 2×4 Service grid
@@ -62,81 +67,81 @@ const SERVICE_GRID = [
   {
     id: 'emergency',
     icon: '🚨',
-    label:   { en: 'Emergency',          te: 'అత్యవసరం',            hi: 'आपातकाल'             },
+    label: { en: 'Emergency', te: 'అత్యవసరం', hi: 'आपातकाल' },
     bgLight: '#FFECEC',
-    bgDark:  '#3A1818',
+    bgDark: '#3A1818',
     textLight: '#991B1B',
-    textDark:  '#FECACA',
+    textDark: '#FECACA',
     action: (cb: any) => cb.onSosClick(),
   },
   {
     id: 'transport',
     icon: '🚌',
-    label:   { en: 'Transport',          te: 'రవాణా',               hi: 'परिवहन'               },
+    label: { en: 'Transport', te: 'రవాణా', hi: 'परिवहन' },
     bgLight: '#E6F8F6',
-    bgDark:  '#112E2B',
+    bgDark: '#112E2B',
     textLight: '#03544D',
-    textDark:  '#A5F3FC',
+    textDark: '#A5F3FC',
     action: (cb: any) => cb.onShortcutClick('home'),
   },
   {
     id: 'hotel',
     icon: '🏨',
-    label:   { en: 'Hotel Stays',        te: 'హోటల్లు',             hi: 'होटल'                 },
+    label: { en: 'Hotel Stays', te: 'హోటల్లు', hi: 'होटल' },
     bgLight: '#E0F2FE',
-    bgDark:  '#0C2D48',
+    bgDark: '#0C2D48',
     textLight: '#0369A1',
-    textDark:  '#BAE6FD',
+    textDark: '#BAE6FD',
     action: (cb: any) => cb.onShortcutClick('services', 'hotel'),
   },
   {
     id: 'committees',
     icon: '👥',
-    label:   { en: 'Village Committees', te: 'గ్రామ కమిటీలు',       hi: 'ग्राम समिति'          },
+    label: { en: 'Village Committees', te: 'గ్రామ కమిటీలు', hi: 'ग्राम समिति' },
     bgLight: '#F3E8FF',
-    bgDark:  '#2E1065',
+    bgDark: '#2E1065',
     textLight: '#6B21A8',
-    textDark:  '#E9D5FF',
+    textDark: '#E9D5FF',
     action: (cb: any) => cb.onShortcutClick('directory', 'committees'),
   },
   {
     id: 'jobs',
     icon: '💼',
-    label:   { en: 'Search Jobs',        te: 'ఉద్యోగాలు',           hi: 'नौकरी'                },
+    label: { en: 'Search Jobs', te: 'ఉద్యోగాలు', hi: 'नौकरी' },
     bgLight: '#FEF3C7',
-    bgDark:  '#451A03',
+    bgDark: '#451A03',
     textLight: '#92400E',
-    textDark:  '#FDE68A',
+    textDark: '#FDE68A',
     action: (cb: any) => cb.onShortcutClick('jobs'),
   },
   {
     id: 'mandi',
     icon: '🌾',
-    label:   { en: 'Mandi Rates',        te: 'మండి ధరలు',           hi: 'మండి భావ'             },
+    label: { en: 'Mandi Rates', te: 'మండి ధరలు', hi: 'మండి భావ' },
     bgLight: '#ECEFDF',
-    bgDark:  '#142C12',
+    bgDark: '#142C12',
     textLight: '#3F6212',
-    textDark:  '#D9F99D',
+    textDark: '#D9F99D',
     action: (cb: any) => cb.onShortcutClick('farmer', 'mandi'),
   },
   {
     id: 'schemes',
     icon: '📋',
-    label:   { en: 'Govt Schemes',       te: 'ప్రభుత్వ పథకాలు',     hi: 'యోజనాయేఁ'              },
+    label: { en: 'Govt Schemes', te: 'ప్రభుత్వ పథకాలు', hi: 'యోజనాయేఁ' },
     bgLight: '#FCE7F3',
-    bgDark:  '#4A1525',
+    bgDark: '#4A1525',
     textLight: '#9D174D',
-    textDark:  '#FBCFE8',
+    textDark: '#FBCFE8',
     action: (cb: any) => cb.onShortcutClick('directory', 'schemes'),
   },
   {
     id: 'govtoffices',
     icon: '🏛️',
-    label:   { en: 'Govt Offices',       te: 'ప్రభుత్వ కార్యాలయాలు', hi: 'సరకారీ కార్యాలయ'   },
+    label: { en: 'Govt Offices', te: 'ప్రభుత్వ కార్యాలయాలు', hi: 'సరకారీ కార్యాలయ' },
     bgLight: '#EFF6FF',
-    bgDark:  '#172554',
+    bgDark: '#172554',
     textLight: '#1E40AF',
-    textDark:  '#BFDBFE',
+    textDark: '#BFDBFE',
     action: (cb: any) => cb.onShortcutClick('directory', 'govt'),
   },
 ];
@@ -146,12 +151,12 @@ const getPersonaAction = (
   onShortcutClick: DashboardScreenProps['onShortcutClick']
 ) => {
   switch (id) {
-    case 'farmer':   return () => onShortcutClick('farmer');
-    case 'student':  return () => onShortcutClick('directory', 'education');
+    case 'farmer': return () => onShortcutClick('farmer');
+    case 'student': return () => onShortcutClick('directory', 'education');
     case 'villager': return () => onShortcutClick('directory');
-    case 'visitor':  return () => onShortcutClick('services', 'hotel');
+    case 'visitor': return () => onShortcutClick('services', 'hotel');
     case 'official': return () => onShortcutClick('directory', 'govt');
-    default:         return () => onShortcutClick('home');
+    default: return () => onShortcutClick('home');
   }
 };
 
@@ -167,14 +172,14 @@ interface DailyUtilitiesSectionProps {
 const DailyUtilitiesSection: React.FC<DailyUtilitiesSectionProps> = ({ isDark, colors, onShortcutClick }) => {
   const { getTxt } = useLanguage();
 
-  const cardBg     = isDark ? 'rgba(17,24,39,0.95)' : '#ffffff';
+  const cardBg = isDark ? 'rgba(17,24,39,0.95)' : '#ffffff';
   const cardBorder = isDark ? 'rgba(99,102,241,0.2)' : 'rgba(99,102,241,0.12)';
 
   const TOOLS = [
     { icon: '💰', label: { en: 'Interest\nCalc', te: 'వడ్డీ\nక్యాలిక్యులేటర్', hi: 'బ్యాజ\nకైల్కులేటర్' }, color: '#4ade80', darkBg: '#142C12', lightBg: '#ECEFDF', textLight: '#3F6212', textDark: '#D9F99D', onPress: () => onShortcutClick('utilities', 'interest') },
-    { icon: '📐', label: { en: 'Unit\nConv', te: 'యూనిట్\nకన్వర్టర్', hi: 'ఇకాయీ\nకనవర్టర్' },      color: '#60a5fa', darkBg: '#0C2D48', lightBg: '#E0F2FE', textLight: '#0369A1', textDark: '#BAE6FD', onPress: () => onShortcutClick('utilities', 'unit')     },
-    { icon: '⏱',  label: { en: 'Stopwatch\n& Timer', te: 'స్టాప్‌వాచ్\n& టైమర్', hi: 'స్టాప్వాచ్\n& టైమర్' },   color: '#fbbf24', darkBg: '#451A03', lightBg: '#FEF3C7', textLight: '#92400E', textDark: '#FDE68A', onPress: () => onShortcutClick('utilities', 'stopwatch') },
-    { icon: '⚡', label: { en: 'More\nTools', te: 'మరిన్ని\nసాధనాలు', hi: 'ఔర\nఉపకరణ' },           color: '#c084fc', darkBg: '#2E1065', lightBg: '#F3E8FF', textLight: '#6B21A8', textDark: '#E9D5FF', onPress: () => onShortcutClick('utilities') },
+    { icon: '📐', label: { en: 'Unit\nConv', te: 'యూనిట్\nకన్వర్టర్', hi: 'ఇకాయీ\nకనవర్టర్' }, color: '#60a5fa', darkBg: '#0C2D48', lightBg: '#E0F2FE', textLight: '#0369A1', textDark: '#BAE6FD', onPress: () => onShortcutClick('utilities', 'unit') },
+    { icon: '⏱', label: { en: 'Stopwatch\n& Timer', te: 'స్టాప్‌వాచ్\n& టైమర్', hi: 'స్టాప్వాచ్\n& టైమర్' }, color: '#fbbf24', darkBg: '#451A03', lightBg: '#FEF3C7', textLight: '#92400E', textDark: '#FDE68A', onPress: () => onShortcutClick('utilities', 'stopwatch') },
+    { icon: '⚡', label: { en: 'More\nTools', te: 'మరిన్ని\nసాధనాలు', hi: 'ఔర\nఉపకరణ' }, color: '#c084fc', darkBg: '#2E1065', lightBg: '#F3E8FF', textLight: '#6B21A8', textDark: '#E9D5FF', onPress: () => onShortcutClick('utilities') },
   ];
 
   return (
@@ -213,16 +218,16 @@ const DailyUtilitiesSection: React.FC<DailyUtilitiesSectionProps> = ({ isDark, c
 };
 
 const dutStyles = StyleSheet.create({
-  section:       { borderRadius: 18, borderWidth: 1.5, padding: 14, paddingBottom: 16, shadowColor: '#6366f1', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 12, elevation: 5 },
-  header:        { flexDirection: 'row', alignItems: 'flex-start', gap: 10, marginBottom: 14 },
-  headerIcon:    { width: 34, height: 34, borderRadius: 10, alignItems: 'center', justifyContent: 'center' },
-  title:         { fontSize: 14, fontWeight: '800' },
-  subtitle:      { fontSize: 11, marginTop: 2 },
-  grid:          { flexDirection: 'row', justifyContent: 'space-between', gap: 6 },
-  toolCard:      { flex: 1, borderRadius: 14, paddingVertical: 10, paddingHorizontal: 2, alignItems: 'center', gap: 6, minHeight: 85, shadowColor: '#000', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.18, shadowRadius: 6, elevation: 4 },
-  toolIconCircle:{ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
-  toolEmoji:     { fontSize: 18 },
-  toolLabel:     { fontSize: 9.5, fontWeight: '800', textAlign: 'center', lineHeight: 12 },
+  section: { borderRadius: 18, borderWidth: 1.5, padding: 14, paddingBottom: 16, shadowColor: '#6366f1', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 12, elevation: 5 },
+  header: { flexDirection: 'row', alignItems: 'flex-start', gap: 10, marginBottom: 14 },
+  headerIcon: { width: 34, height: 34, borderRadius: 10, alignItems: 'center', justifyContent: 'center' },
+  title: { fontSize: 14, fontWeight: '800' },
+  subtitle: { fontSize: 11, marginTop: 2 },
+  grid: { flexDirection: 'row', justifyContent: 'space-between', gap: 6 },
+  toolCard: { flex: 1, borderRadius: 14, paddingVertical: 10, paddingHorizontal: 2, alignItems: 'center', gap: 6, minHeight: 85, shadowColor: '#000', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.18, shadowRadius: 6, elevation: 4 },
+  toolIconCircle: { width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
+  toolEmoji: { fontSize: 18 },
+  toolLabel: { fontSize: 9.5, fontWeight: '800', textAlign: 'center', lineHeight: 12 },
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -237,15 +242,16 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
   onSafetyClick,
 }) => {
   const { t, getTxt, lang } = useLanguage();
-  const { colors, theme }   = useTheme();
+  const { colors, theme } = useTheme();
   const { timeString, getGreetingKey, weatherData } = useWeatherClock();
 
-  const [searchText,    setSearchText]    = useState('');
+  const [searchText, setSearchText] = useState('');
   const [activePersona, setActivePersona] = useState('farmer');
-  const [transitTab,    setTransitTab]    = useState<'flights' | 'buses' | 'trains'>('flights');
+  const [transitTab, setTransitTab] = useState<'flights' | 'buses' | 'trains'>('flights');
+  const [sourcesModalOpen, setSourcesModalOpen] = useState(false);
 
   const localizedCondition = getConditionTranslations(weatherData.conditionCode)[lang as 'en' | 'te' | 'hi'];
-  const condEmoji          = getConditionEmoji(weatherData.conditionCode);
+  const condEmoji = getConditionEmoji(weatherData.conditionCode);
 
   const isDark = theme === 'dark';
 
@@ -260,7 +266,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
         te: "ఆంధ్రప్రదేశ్ లో వేగంగా అభివృద్ధి చెందుతున్న మెగా పారిశ్రామిక, సౌర విద్యుత్ మరియు వ్యవసాయ కేంద్రమైన ఓర్వకల్లు డిజిటల్ హబ్‌కు స్వాగతం.",
         hi: "आंध्र प्रदेश के तेजी से बढ़ते मेगा औद्योगिक, सौर और कृषि हब, ओरवाकल डिजिटल हब में आपका स्वागत है।"
       }[lang as 'en' | 'te' | 'hi'] || "Welcome to Orvakal Digital Hub.";
-      
+
       await speechService.speak(welcomeMessage, lang);
     }
   };
@@ -306,8 +312,8 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
               {lang === 'te'
                 ? 'అత్యవసర SOS హెల్ప్‌లైన్'
                 : lang === 'hi'
-                ? 'आपातकालीन एसओएस हेल्पलाइन'
-                : 'EMERGENCY SOS HOTLINES'}
+                  ? 'आपातकालीन एसओएस हेल्पलाइन'
+                  : 'EMERGENCY SOS HOTLINES'}
             </Text>
           </View>
           <View style={styles.sosBadge}>
@@ -366,8 +372,8 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
               {lang === 'te'
                 ? 'ఆంధ్రప్రదేశ్ వేగంగా అభివృద్ధి చెందుతున్న మెగా పారిశ్రామిక కేంద్రం. సౌర పార్కులు, విమాన రవాణా మరియు వ్యవసాయ సేవలు మీ చేతి వేళ్ళ చివర.'
                 : lang === 'hi'
-                ? 'आंध्र प्रदेश का तेज़ी से बढ़ता मेगा औद्योगिक हब। सौर पार्क, उड़ान पारगमन और कृषि सेवाएं आपकी उंगलियों पर।'
-                : "Andhra Pradesh's fast-growing mega industrial hub. Solar parks, flight transit & agri services at your fingertips."}
+                  ? 'आंध्र प्रदेश का तेज़ी से बढ़ता मेगा औद्योगिक हब। सौर पार्क, उड़ान पारगमन और कृषि सेवाएं आपकी उंगलियों पर।'
+                  : "Andhra Pradesh's fast-growing mega industrial hub. Solar parks, flight transit & agri services at your fingertips."}
             </Text>
 
             <View style={styles.heroBadgeRow}>
@@ -462,8 +468,8 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
                     {lang === 'te'
                       ? 'ఓర్వకల్లు పారిశ్రామిక హబ్ అంతర్దృష్టులు'
                       : lang === 'hi'
-                      ? 'ओरवाकल इंडस्ट्रियल हब इनसाइट्स'
-                      : 'Orvakal Industrial Hub Insights'}
+                        ? 'ओरवाकल इंडस्ट्रियल हब इनसाइट्स'
+                        : 'Orvakal Industrial Hub Insights'}
                   </Text>
                   <Text style={[styles.investorZone, { color: isDark ? '#fbbf24' : '#e65c00' }]}>INVESTOR ZONE</Text>
                 </View>
@@ -653,8 +659,8 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
               const isActive = transitTab === tab;
               const tabLabel = {
                 flights: { icon: '✈️', en: 'Flights (KJB)', te: 'విమానాలు', hi: 'ఉడాయినేం' },
-                buses:   { icon: '🚌', en: 'Buses (APSRTC)', te: 'బస్సులు',  hi: 'బసేం' },
-                trains:  { icon: '🚆', en: 'Trains (KRNT)', te: 'రైళ్ళు',   hi: 'ట్రేనేం' },
+                buses: { icon: '🚌', en: 'Buses (APSRTC)', te: 'బస్సులు', hi: 'బసేం' },
+                trains: { icon: '🚆', en: 'Trains (KRNT)', te: 'రైళ్ళు', hi: 'ట్రేనేం' },
               }[tab];
               return (
                 <TouchableOpacity
@@ -808,10 +814,47 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
           </ScrollView>
         </View>
 
+        {/* ── 9.5. Disclaimer Section ──────────────────────────────── */}
+        <View
+          style={[
+            styles.disclaimerCard,
+            {
+              backgroundColor: isDark ? 'rgba(217, 119, 6, 0.08)' : 'rgba(217, 119, 6, 0.04)',
+              borderColor: isDark ? 'rgba(217, 119, 6, 0.25)' : 'rgba(217, 119, 6, 0.15)',
+              shadowColor: '#d97706',
+            },
+          ]}
+        >
+          <View style={styles.disclaimerHeader}>
+            <Info size={14} color={isDark ? '#F59E0B' : '#D97706'} style={styles.marginRight} />
+            <Text style={[styles.disclaimerTitleText, { color: isDark ? '#F59E0B' : '#D97706' }]}>
+              {t.disclaimerTitle}
+            </Text>
+          </View>
+          <Text style={[styles.disclaimerBodyText, { color: colors.mutedForeground }]}>
+            {t.govtDisclaimer}
+          </Text>
+          <TouchableOpacity
+            style={[
+              styles.disclaimerBtn,
+              {
+                backgroundColor: colors.uniformPastelBg,
+                borderColor: colors.uniformPastelBorder,
+              },
+            ]}
+            onPress={() => setSourcesModalOpen(true)}
+          >
+            <ExternalLink size={12} color={colors.uniformPastelText} style={styles.marginRight} />
+            <Text style={[styles.disclaimerBtnText, { color: colors.uniformPastelText }]}>
+              {t.officialGovtSources}
+            </Text>
+          </TouchableOpacity>
+        </View>
+
         {/* ── 10. Footer Section ───────────────────────────────────── */}
         <View style={[styles.footerSection, { borderTopColor: colors.border }]}>
           <Text style={[styles.footerText, { color: colors.mutedForeground }]}>
-            © 2026 Orvakal Gram Panchayat. All Rights Reserved.
+            © 2026 Orvakal Digital Hub. Community Initiative.
           </Text>
           <View style={{ flexDirection: 'row', gap: 16, alignItems: 'center', marginTop: 4 }}>
             <TouchableOpacity onPress={onPrivacyClick}>
@@ -828,6 +871,49 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
           </View>
         </View>
       </ScrollView>
+
+      {/* Government Sources Modal */}
+      <CustomModal
+        isOpen={sourcesModalOpen}
+        onClose={() => setSourcesModalOpen(false)}
+        title={t.officialGovtSources}
+      >
+        <Text style={{ fontSize: 11, color: colors.mutedForeground, marginBottom: 12, lineHeight: 15 }}>
+          {t.govtSourcesHelpText}
+        </Text>
+        <View style={{ gap: 10 }}>
+          {govtSources.map((source) => (
+            <View
+              key={source.id}
+              style={[
+                styles.sourceCard,
+                {
+                  backgroundColor: `${colors.muted}15`,
+                  borderColor: colors.border,
+                },
+              ]}
+            >
+              <Text style={[styles.sourceNameText, { color: colors.foreground }]}>
+                {getTxt(source.name)}
+              </Text>
+              <TouchableOpacity onPress={() => Linking.openURL(source.url)}>
+                <Text style={[styles.sourceUrlText, { color: colors.primary }]}>
+                  {source.url}
+                </Text>
+              </TouchableOpacity>
+              <Text style={[styles.sourceDescText, { color: colors.mutedForeground }]}>
+                {getTxt(source.description)}
+              </Text>
+              <TouchableOpacity
+                style={[styles.visitBtn, { backgroundColor: colors.primary }]}
+                onPress={() => Linking.openURL(source.url)}
+              >
+                <Text style={styles.visitBtnText}>{t.visitOfficialSite}</Text>
+              </TouchableOpacity>
+            </View>
+          ))}
+        </View>
+      </CustomModal>
     </>
   );
 };
@@ -1017,15 +1103,15 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     gap: 8,
   },
-  weatherStripLeft:      { flexDirection: 'row', alignItems: 'center', gap: 6, flex: 1.2 },
-  weatherStripEmoji:     { fontSize: 22 },
-  weatherStripTemp:      { color: '#ffffff', fontSize: 16, fontWeight: '900' },
-  weatherStripCond:      { color: 'rgba(255,255,255,0.7)', fontSize: 9, fontWeight: '600', marginTop: 1 },
-  weatherStripDivider:   { width: 1, height: 34, backgroundColor: 'rgba(255,255,255,0.2)' },
-  weatherStripMid:       { flex: 1, gap: 4 },
-  weatherStripStat:      { color: 'rgba(255,255,255,0.85)', fontSize: 10, fontWeight: '600' },
-  weatherStripRight:     { alignItems: 'flex-end' },
-  weatherStripTime:      { color: '#ffffff', fontSize: 18, fontWeight: '900', letterSpacing: -0.5 },
+  weatherStripLeft: { flexDirection: 'row', alignItems: 'center', gap: 6, flex: 1.2 },
+  weatherStripEmoji: { fontSize: 22 },
+  weatherStripTemp: { color: '#ffffff', fontSize: 16, fontWeight: '900' },
+  weatherStripCond: { color: 'rgba(255,255,255,0.7)', fontSize: 9, fontWeight: '600', marginTop: 1 },
+  weatherStripDivider: { width: 1, height: 34, backgroundColor: 'rgba(255,255,255,0.2)' },
+  weatherStripMid: { flex: 1, gap: 4 },
+  weatherStripStat: { color: 'rgba(255,255,255,0.85)', fontSize: 10, fontWeight: '600' },
+  weatherStripRight: { alignItems: 'flex-end' },
+  weatherStripTime: { color: '#ffffff', fontSize: 18, fontWeight: '900', letterSpacing: -0.5 },
   weatherStripTimeLabel: { color: 'rgba(255,255,255,0.6)', fontSize: 8, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 0.4 },
 
   investorCta: {
@@ -1272,5 +1358,79 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '700',
     textDecorationLine: 'underline',
+  },
+  disclaimerCard: {
+    borderWidth: 1.5,
+    borderRadius: 16,
+    padding: 14,
+    marginVertical: 6,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+    elevation: 4,
+  },
+  disclaimerHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 8,
+  },
+  disclaimerTitleText: {
+    fontSize: 12,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
+  },
+  disclaimerBodyText: {
+    fontSize: 10.5,
+    lineHeight: 15,
+  },
+  disclaimerBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
+    borderRadius: 10,
+    marginTop: 10,
+    gap: 6,
+    borderWidth: 1,
+  },
+  disclaimerBtnText: {
+    fontSize: 11,
+    fontWeight: 'bold',
+  },
+  sourceCard: {
+    padding: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+    marginBottom: 4,
+    gap: 6,
+  },
+  sourceNameText: {
+    fontSize: 12.5,
+    fontWeight: 'bold',
+  },
+  sourceUrlText: {
+    fontSize: 11,
+    textDecorationLine: 'underline',
+    marginBottom: 2,
+  },
+  sourceDescText: {
+    fontSize: 10.5,
+    lineHeight: 14,
+  },
+  visitBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 6,
+    borderRadius: 8,
+    marginTop: 4,
+    gap: 4,
+  },
+  visitBtnText: {
+    fontSize: 10,
+    fontWeight: 'bold',
+    color: '#ffffff',
   },
 });

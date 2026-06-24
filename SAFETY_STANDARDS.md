@@ -29,8 +29,8 @@ We encourage our community to help us keep Orvakal Digital Hub safe. If you enco
 * **In-App Reporting:** You can report issues or suspicious posts directly via the **Panchayat Grievance Desk** in the App. Please select "Others" or specify "Safety Violation" in your report.
 * **Direct Email Helpline:** Send an email with details (and screenshots if possible) to our dedicated safety contact:
   * **Email:** prasanna.tws@gmail.com
-* **Official Postal Address:**
-  * Orvakal Gram Panchayat Office, Orvakal, Kurnool District, Andhra Pradesh, India.
+* **Mailing Address:**
+  * Orvakal Community Portal (Care of: Developer Prasanna.Tws), Kurnool District, Andhra Pradesh, India.
 
 All reports are treated with the highest priority and confidentiality.
 

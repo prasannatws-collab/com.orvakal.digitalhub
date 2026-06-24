@@ -17,10 +17,10 @@ Orvakal Digital Hub is designed to serve the residents, farmers, and visitors of
 * **Purpose:** The App features proximity-based sorting. It uses your device’s current coordinates to dynamically calculate the distance to local public resources (such as banks, ATMs, schools, hospitals, post offices, and police stations) and sort them from nearest to farthest.
 * **Processing:** **All location-based distance calculations are performed locally on your device.** Your precise coordinates are never transmitted to our servers or stored permanently.
 
-### B. Audio and Microphone Services
-* **Permissions Requested:** `RECORD_AUDIO`.
-* **Purpose:** To assist rural users and improve accessibility, the App provides a Text-to-Speech audio reader (using native Expo speech engines) to read crop advisories, government schemes, and notifications aloud. Microphone access may be requested for voice search or vocal commands in English, Telugu, or Hindi.
-* **Processing:** Audio data is processed locally on the device and is not recorded, stored, or shared.
+### B. Text-to-Speech Accessibility (Audio)
+* **Permissions Requested:** **None.** The App does not request or require microphone or audio recording permissions.
+* **Purpose:** To assist rural users and improve accessibility, the App provides a Text-to-Speech audio reader (using native Expo speech engines) to read crop advisories, government schemes, and notifications aloud.
+* **Processing:** All speech synthesis is processed locally on the device using standard accessibility engines. No audio is recorded, captured, or transmitted.
 
 ### C. Internet and Network State
 * **Permissions Requested:** `INTERNET` and `ACCESS_NETWORK_STATE`.
@@ -59,7 +59,6 @@ We implement appropriate technical and organizational measures to protect the in
 
 You can manage or revoke the App's permissions at any time through your device's operating system settings:
 * **Location:** Turn off Location Services for "Orvakal Digital Hub" if you do not want nearest-to-farthest sorting. The lists will default to alphabetical sorting.
-* **Microphone:** Turn off Microphone access. Accessibility text-to-speech reading features will continue to work normally as they only output audio.
 
 ---
 
@@ -77,7 +76,6 @@ We may update our Privacy Policy from time to time. We will notify you of any ch
 
 ## 8. Contact Us
 
-If you have any questions, concerns, or suggestions regarding this Privacy Policy, please contact the Orvakal Village Administration or the app developer:
+If you have any questions, concerns, or suggestions regarding this Privacy Policy, please contact the app developer:
 
 * **Email:** prasanna.tws@gmail.com
-* **Office:** Orvakal

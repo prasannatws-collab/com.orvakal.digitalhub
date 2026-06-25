@@ -65,9 +65,9 @@ export const privacySections: PrivacySection[] = [
       hi: "इंटरनेट और लाइव डेटा"
     },
     content: {
-      en: "Internet access is used to load live weather updates from Open-Meteo, mandi prices, and official notices. These requests are anonymous and do not contain any personal identifier or tracking cookies.",
+      en: "Internet access is used to load live weather updates from Open-Meteo, mandi prices, and public notices. These requests are anonymous and do not contain any personal identifier or tracking cookies.",
       te: "వాతావరణం (ఓపెన్-మెటియో ద్వారా), మార్కెట్ ధరలు మరియు నోటీసుల వంటి ప్రత్యక్ష సమాచారాన్ని లోడ్ చేయడానికి ఇంటర్నెట్ అనుమతి ఉపయోగించబడుతుంది. ఈ అభ్యర్థనలు పూర్తిగా అనామకమైనవి మరియు వ్యక్తిగత గుర్తింపు వివరాలను కలిగి ఉండవు.",
-      hi: "ओपन-मेटियो से लाइव मौसम अपडेट, मंडी की कीमतें और आधिकारिक नोटिस लोड करने के लिए इंटरनेट का उपयोग किया जाता है। ये अनुरोध अज्ञात हैं और इसमें कोई व्यक्तिगत पहचानकर्ता या ट्रैकिंग कुकीज़ नहीं हैं।"
+      hi: "ओपन-मेटियो से लाइव मौसम अपडेट, मंडी की कीमतें और सार्वजनिक नोटिस लोड करने के लिए इंटरनेट का उपयोग किया जाता है। ये अनुरोध अज्ञात हैं और इसमें कोई व्यक्तिगत पहचानकर्ता या ट्रैकिंग कुकीज़ नहीं हैं।"
     }
   },
   {

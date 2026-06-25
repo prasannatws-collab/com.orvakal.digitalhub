@@ -1,7 +1,9 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, ScrollView, Linking, Animated, Image, Platform, StatusBar as RNStatusBar } from 'react-native';
-import { LayoutDashboard, Building2, Sprout, Home, Briefcase, Bell, Moon, Sun, Phone, ShieldAlert, X } from 'lucide-react-native';
+import { LayoutDashboard, Building2, Sprout, Home, Briefcase, Bell, Moon, Sun, Phone, ShieldAlert, X, Info, ExternalLink } from 'lucide-react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { govtSources } from './src/data/datasources/static/govtSourcesData';
 
 // State & Contexts
 import { LanguageProvider, useLanguage } from './src/core/state/LanguageContext';
@@ -83,6 +85,35 @@ function MainAppShell() {
   const [companiesModalOpen, setCompaniesModalOpen] = useState(false);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [safetyModalOpen, setSafetyModalOpen] = useState(false);
+
+  // Disclaimer popup state
+  const [showDisclaimerPopup, setShowDisclaimerPopup] = useState(false);
+
+  useEffect(() => {
+    const checkDisclaimer = async () => {
+      try {
+        const accepted = await AsyncStorage.getItem('disclaimer_accepted_v1');
+        if (accepted !== 'true') {
+          setShowDisclaimerPopup(true);
+        }
+      } catch (err) {
+        console.warn("AsyncStorage read error: ", err);
+        // Fallback: show disclaimer anyway if read fails, to be safe
+        setShowDisclaimerPopup(true);
+      }
+    };
+    checkDisclaimer();
+  }, []);
+
+  const handleAcceptDisclaimer = async () => {
+    try {
+      await AsyncStorage.setItem('disclaimer_accepted_v1', 'true');
+      setShowDisclaimerPopup(false);
+    } catch (err) {
+      console.warn("AsyncStorage write error: ", err);
+      setShowDisclaimerPopup(false);
+    }
+  };
 
   const handleShortcutClick = (
     tabName: Tab,
@@ -322,6 +353,78 @@ function MainAppShell() {
       </Animated.View>
 
       {/* Global Modals */}
+
+      {/* Mandatory First-Launch Disclaimer Modal */}
+      <CustomModal
+        isOpen={showDisclaimerPopup}
+        onClose={() => {}}
+        title={
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+            <Info size={18} color="#D97706" />
+            <Text style={{ fontSize: 15, fontWeight: 'bold', color: colors.foreground }}>
+              {t.disclaimerTitle}
+            </Text>
+          </View>
+        }
+        hideClose={true}
+      >
+        <View style={{ gap: 12 }}>
+          <Text style={{ fontSize: 12, lineHeight: 17, color: colors.foreground }}>
+            {t.govtDisclaimer}
+          </Text>
+
+          <View style={{ height: 1, backgroundColor: colors.border, marginVertical: 4 }} />
+
+          <Text style={{ fontSize: 11, fontWeight: 'bold', color: colors.primary }}>
+            {t.officialGovtSources}
+          </Text>
+
+          <View style={{ gap: 8 }}>
+            {govtSources.map((source) => (
+              <TouchableOpacity
+                key={source.id}
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: 8,
+                  borderRadius: 8,
+                  backgroundColor: `${colors.muted}15`,
+                  borderWidth: 1,
+                  borderColor: colors.border,
+                }}
+                onPress={() => Linking.openURL(source.url)}
+              >
+                <View style={{ flex: 1, marginRight: 8 }}>
+                  <Text style={{ fontSize: 11, fontWeight: '600', color: colors.foreground }}>
+                    {getTxt(source.name)}
+                  </Text>
+                  <Text style={{ fontSize: 9, color: colors.primary }}>
+                    {source.url}
+                  </Text>
+                </View>
+                <ExternalLink size={12} color={colors.primary} />
+              </TouchableOpacity>
+            ))}
+          </View>
+
+          <TouchableOpacity
+            style={{
+              backgroundColor: colors.primary,
+              paddingVertical: 12,
+              borderRadius: 10,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: 12,
+            }}
+            onPress={handleAcceptDisclaimer}
+          >
+            <Text style={{ color: '#ffffff', fontSize: 13, fontWeight: 'bold' }}>
+              {t.agreeAndContinue}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </CustomModal>
 
       {/* A. SOS Emergency Modal */}
       <CustomModal isOpen={sosModalOpen} onClose={() => setSosModalOpen(false)} title="Emergency Helplines">

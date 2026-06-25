@@ -161,8 +161,8 @@ export const InsightsScreen: React.FC<InsightsScreenProps> = ({
         </Text>
         <Text style={[styles.bodyText, { color: colors.mutedForeground, fontSize: 11 }]}>
           {lang === 'en'
-            ? "Official channels and portals for incentive approvals and industrial allotments:"
-            : "ప్రోత్సాహక అనుమతులు మరియు భూమి కేటాయింపులకు సంబంధించిన అధికారిక సమాచారం:"}
+            ? "Government channels and portals for incentive approvals and industrial allotments:"
+            : "ప్రోత్సాహక అనుమతులు మరియు భూమి కేటాయింపులకు సంబంధించిన సమాచారం:"}
         </Text>
         <View style={styles.bulletsList}>
           {hubResources.map((res) => (

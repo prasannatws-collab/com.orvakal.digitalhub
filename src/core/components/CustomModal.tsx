@@ -9,6 +9,7 @@ interface CustomModalProps {
   title: React.ReactNode;
   children: React.ReactNode;
   innerStyle?: ViewStyle;
+  hideClose?: boolean;
 }
 
 export const CustomModal: React.FC<CustomModalProps> = ({
@@ -16,7 +17,8 @@ export const CustomModal: React.FC<CustomModalProps> = ({
   onClose,
   title,
   children,
-  innerStyle
+  innerStyle,
+  hideClose = false,
 }) => {
   const { colors } = useTheme();
 
@@ -25,7 +27,7 @@ export const CustomModal: React.FC<CustomModalProps> = ({
       animationType="fade"
       transparent={true}
       visible={isOpen}
-      onRequestClose={onClose}
+      onRequestClose={hideClose ? undefined : onClose}
     >
       <View style={styles.overlay}>
         <View
@@ -48,9 +50,11 @@ export const CustomModal: React.FC<CustomModalProps> = ({
                 title
               )}
             </View>
-            <TouchableOpacity onPress={onClose} style={[styles.closeButton, { borderColor: colors.border }]}>
-              <X size={16} color={colors.foreground} />
-            </TouchableOpacity>
+            {!hideClose && (
+              <TouchableOpacity onPress={onClose} style={[styles.closeButton, { borderColor: colors.border }]}>
+                <X size={16} color={colors.foreground} />
+              </TouchableOpacity>
+            )}
           </View>
 
           {/* Body */}

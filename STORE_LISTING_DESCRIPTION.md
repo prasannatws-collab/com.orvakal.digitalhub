@@ -4,10 +4,10 @@ Copy and paste the following content as your app's full description (en-US) on t
 
 ---
 
-⚠️ DISCLAIMER: Orvakal Digital Hub is an independent, community-driven information portal. This app is NOT affiliated with, authorized by, or associated with any government entity, department, or official authority. All government-related information, schemes, contacts, and public utility details listed inside this app are aggregated from public sources for reference only. Please verify critical details directly on official government websites.
+⚠️ DISCLAIMER: Orvakal Digital Hub is an independent, community-driven information portal. This app is NOT affiliated with, authorized by, or associated with any government entity, department, or official authority. All government-related information, schemes, contacts, and public utility details listed inside this app are aggregated from public sources for reference only. Please verify critical details directly on the respective government websites.
 
-🌐 OFFICIAL GOVERNMENT INFORMATION SOURCES:
-For the government information, directory details, and services referenced in this app, we compile data from the following official government sources:
+🌐 GOVERNMENT PORTAL SOURCES:
+For the government information, directory details, and services referenced in this app, we compile data from the following government sources:
 1. Kurnool District Local Administration & Officers Directory: https://kurnool.ap.gov.in
 2. Andhra Pradesh State Government Portal & Schemes: https://www.ap.gov.in
 3. Government of India National Portal & Central Schemes: https://www.india.gov.in
@@ -20,7 +20,7 @@ For the government information, directory details, and services referenced in th
 
 ---
 
-Welcome to the digital gateway of Orvakal — Andhra Pradesh's fastest-growing Mega Industrial Hub in Kurnool district. This app connects farmers, villagers, students, visitors, and local officials to every service, scheme, and resource they need — all in one place. Whether you're a farmer checking crop rates, a resident filing a panchayat grievance, a job seeker exploring industrial opportunities, or an investor scouting the APIIC corridor — the Orvakal Village Portal is built for you.
+Welcome to the digital gateway of Orvakal — Andhra Pradesh's fastest-growing Mega Industrial Hub in Kurnool district. This app connects farmers, villagers, students, visitors, and local officers to every service, scheme, and resource they need — all in one place. Whether you're a farmer checking crop rates, a resident filing a panchayat grievance, a job seeker exploring industrial opportunities, or an investor scouting the APIIC corridor — the Orvakal Village Portal is built for you.
 
 🏭 ABOUT ORVAKAL
 Orvakal is the heart of the Hyderabad–Bengaluru Industrial Corridor (HBIC), home to mega industries like Greenco Solar Park (1000+ MW), UltraTech Cement, Ramco Cement, and the Kurnool Mega Food Park. With Airport KJB nearby and an active panchayat infrastructure, Orvakal is where rural roots meet industrial ambition.
@@ -29,7 +29,7 @@ Orvakal is the heart of the Hyderabad–Bengaluru Industrial Corridor (HBIC), ho
 
 🏠 Home Dashboard
 - Live weather, local time, and village status at a glance
-- Persona-based quick links for Farmer, Student, Villager, Visitor & Officials
+- Persona-based quick links for Farmer, Student, Villager, Visitor & Officers
 - Emergency SOS hotlines with one-tap access
 - Orvakal Industrial Hub Insights & Investor Zone
 

@@ -59,7 +59,6 @@ const PERSONA_TABS = [
   { id: 'student', icon: '🎓', label: { en: 'Student', te: 'విద్యార్థి', hi: 'छात्र' } },
   { id: 'villager', icon: '🏡', label: { en: 'Villager', te: 'గ్రామీణుడు', hi: 'ग्रामीण' } },
   { id: 'visitor', icon: '📖', label: { en: 'Visitor', te: 'సందర్శకుడు', hi: 'पर्यटक' } },
-  { id: 'official', icon: '💼', label: { en: 'Officials', te: 'అధికారి', hi: 'अधिकारी' } },
 ];
 
 // 2×4 Service grid
@@ -155,7 +154,6 @@ const getPersonaAction = (
     case 'student': return () => onShortcutClick('directory', 'education');
     case 'villager': return () => onShortcutClick('directory');
     case 'visitor': return () => onShortcutClick('services', 'hotel');
-    case 'official': return () => onShortcutClick('directory', 'govt');
     default: return () => onShortcutClick('home');
   }
 };
@@ -298,6 +296,45 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
             value={searchText}
             onChangeText={setSearchText}
           />
+        </View>
+
+        {/* ── 1.5. Government Disclaimer Section (High Visibility) ──── */}
+        <View
+          style={[
+            styles.disclaimerCard,
+            {
+              backgroundColor: isDark ? 'rgba(217, 119, 6, 0.08)' : 'rgba(217, 119, 6, 0.04)',
+              borderColor: isDark ? 'rgba(217, 119, 6, 0.25)' : 'rgba(217, 119, 6, 0.15)',
+              shadowColor: '#d97706',
+              marginBottom: 10,
+            },
+          ]}
+        >
+          <View style={styles.disclaimerHeader}>
+            <Info size={14} color={isDark ? '#F59E0B' : '#D97706'} style={styles.marginRight} />
+            <Text style={[styles.disclaimerTitleText, { color: isDark ? '#F59E0B' : '#D97706' }]}>
+              {t.disclaimerTitle}
+            </Text>
+          </View>
+          <Text style={[styles.disclaimerBodyText, { color: colors.mutedForeground, marginTop: 4 }]}>
+            {t.govtDisclaimer}
+          </Text>
+          <TouchableOpacity
+            style={[
+              styles.disclaimerBtn,
+              {
+                backgroundColor: colors.uniformPastelBg,
+                borderColor: colors.uniformPastelBorder,
+                marginTop: 8,
+              },
+            ]}
+            onPress={() => setSourcesModalOpen(true)}
+          >
+            <ExternalLink size={12} color={colors.uniformPastelText} style={styles.marginRight} />
+            <Text style={[styles.disclaimerBtnText, { color: colors.uniformPastelText }]}>
+              {t.officialGovtSources}
+            </Text>
+          </TouchableOpacity>
         </View>
 
         {/* ── 2. SOS Banner ───────────────────────────────────────── */}
@@ -812,43 +849,6 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
               </View>
             ))}
           </ScrollView>
-        </View>
-
-        {/* ── 9.5. Disclaimer Section ──────────────────────────────── */}
-        <View
-          style={[
-            styles.disclaimerCard,
-            {
-              backgroundColor: isDark ? 'rgba(217, 119, 6, 0.08)' : 'rgba(217, 119, 6, 0.04)',
-              borderColor: isDark ? 'rgba(217, 119, 6, 0.25)' : 'rgba(217, 119, 6, 0.15)',
-              shadowColor: '#d97706',
-            },
-          ]}
-        >
-          <View style={styles.disclaimerHeader}>
-            <Info size={14} color={isDark ? '#F59E0B' : '#D97706'} style={styles.marginRight} />
-            <Text style={[styles.disclaimerTitleText, { color: isDark ? '#F59E0B' : '#D97706' }]}>
-              {t.disclaimerTitle}
-            </Text>
-          </View>
-          <Text style={[styles.disclaimerBodyText, { color: colors.mutedForeground }]}>
-            {t.govtDisclaimer}
-          </Text>
-          <TouchableOpacity
-            style={[
-              styles.disclaimerBtn,
-              {
-                backgroundColor: colors.uniformPastelBg,
-                borderColor: colors.uniformPastelBorder,
-              },
-            ]}
-            onPress={() => setSourcesModalOpen(true)}
-          >
-            <ExternalLink size={12} color={colors.uniformPastelText} style={styles.marginRight} />
-            <Text style={[styles.disclaimerBtnText, { color: colors.uniformPastelText }]}>
-              {t.officialGovtSources}
-            </Text>
-          </TouchableOpacity>
         </View>
 
         {/* ── 10. Footer Section ───────────────────────────────────── */}

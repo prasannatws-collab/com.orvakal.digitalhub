@@ -43,7 +43,8 @@ const mockCoordinates: Record<string, { latitude: number; longitude: number }> =
 
 export const DirectoryScreen: React.FC<DirectoryScreenProps> = ({ initialSubTab, onClose }) => {
   const { lang, getTxt, t } = useLanguage();
-  const { colors } = useTheme();
+  const { colors, theme } = useTheme();
+  const isDark = theme === 'dark';
   const [subTab, setSubTab] = useState<SubTab | null>(initialSubTab);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [expandedOfficeId, setExpandedOfficeId] = useState<string | null>(null);
@@ -225,6 +226,58 @@ export const DirectoryScreen: React.FC<DirectoryScreenProps> = ({ initialSubTab,
             </Text>
           </TouchableOpacity>
         )}
+      </View>
+
+      {/* Dynamic Government Disclaimer at the Top of Sub-tabs */}
+      <View
+        style={[
+          styles.disclaimerCard,
+          {
+            backgroundColor: isDark ? 'rgba(217, 119, 6, 0.08)' : 'rgba(217, 119, 6, 0.04)',
+            borderColor: isDark ? 'rgba(217, 119, 6, 0.25)' : 'rgba(217, 119, 6, 0.15)',
+            shadowColor: '#d97706',
+            marginBottom: 12,
+          },
+        ]}
+      >
+        <Text style={[styles.disclaimerText, { color: colors.uniformPastelText, fontSize: 10.5, lineHeight: 15 }]}>
+          ⚠️ <Text style={{ fontWeight: 'bold' }}>{t.disclaimerTitle}:</Text> {t.govtDisclaimer}
+        </Text>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
+          {subTab === 'postal' && (
+            <TouchableOpacity onPress={() => Linking.openURL('https://www.indiapost.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+              <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>indiapost.gov.in ↗</Text>
+            </TouchableOpacity>
+          )}
+          {subTab === 'police' && (
+            <TouchableOpacity onPress={() => Linking.openURL('https://appolice.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+              <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>appolice.gov.in ↗</Text>
+            </TouchableOpacity>
+          )}
+          {subTab === 'schemes' && (
+            <>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.ap.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+                <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>ap.gov.in ↗</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.india.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+                <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>india.gov.in ↗</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => Linking.openURL('https://pmkisan.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+                <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>pmkisan.gov.in ↗</Text>
+              </TouchableOpacity>
+            </>
+          )}
+          {subTab !== 'postal' && subTab !== 'police' && subTab !== 'schemes' && (
+            <>
+              <TouchableOpacity onPress={() => Linking.openURL('https://kurnool.ap.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+                <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>kurnool.ap.gov.in ↗</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => Linking.openURL('https://www.ap.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+                <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>ap.gov.in ↗</Text>
+              </TouchableOpacity>
+            </>
+          )}
+        </View>
       </View>
 
       {/* Search Bar for searchable lists */}
@@ -857,21 +910,7 @@ export const DirectoryScreen: React.FC<DirectoryScreenProps> = ({ initialSubTab,
         </View>
       )}
 
-      {/* Government Disclaimer in Subtabs */}
-      <View
-        style={[
-          styles.subTabDisclaimer,
-          {
-            backgroundColor: colors.uniformPastelBg,
-            borderColor: colors.uniformPastelBorder,
-            marginTop: 16,
-          },
-        ]}
-      >
-        <Text style={[styles.subTabDisclaimerText, { color: colors.uniformPastelText }]}>
-          ⚠️ <Text style={{ fontWeight: 'bold' }}>{t.disclaimerTitle}:</Text> {t.govtDisclaimerShort} (Sources: kurnool.ap.gov.in, ap.gov.in, india.gov.in)
-        </Text>
-      </View>
+      {/* Disclaimer is now displayed prominently at the top */}
 
     </ScrollView>
   );

@@ -319,6 +319,17 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({
           <Text style={[styles.disclaimerBodyText, { color: colors.mutedForeground, marginTop: 4 }]}>
             {t.govtDisclaimer}
           </Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
+            <TouchableOpacity onPress={() => Linking.openURL('https://kurnool.ap.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+              <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>kurnool.ap.gov.in ↗</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://www.ap.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+              <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>ap.gov.in ↗</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => Linking.openURL('https://www.india.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+              <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>india.gov.in ↗</Text>
+            </TouchableOpacity>
+          </View>
           <TouchableOpacity
             style={[
               styles.disclaimerBtn,
@@ -1432,5 +1443,15 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
     color: '#ffffff',
+  },
+  linkPill: {
+    borderWidth: 1,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  linkPillText: {
+    fontSize: 9.5,
+    fontWeight: 'bold',
   },
 });

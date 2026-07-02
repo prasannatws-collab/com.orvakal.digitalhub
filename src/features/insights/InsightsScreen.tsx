@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Linking } from 'react-native';
+import { Info } from 'lucide-react-native';
 import { useLanguage } from '../../core/state/LanguageContext';
 import { useTheme } from '../../core/state/ThemeContext';
 import { GlassCard } from '../../core/components/GlassCard';
@@ -34,7 +35,8 @@ export const InsightsScreen: React.FC<InsightsScreenProps> = ({
   onCompanySelect,
 }) => {
   const { lang, t, getTxt } = useLanguage();
-  const { colors } = useTheme();
+  const { colors, theme } = useTheme();
+  const isDark = theme === 'dark';
 
   return (
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]} contentContainerStyle={styles.contentContainer}>
@@ -47,6 +49,33 @@ export const InsightsScreen: React.FC<InsightsScreenProps> = ({
         <TouchableOpacity style={[styles.backBtn, { borderColor: colors.uniformPastelBorder, backgroundColor: colors.uniformPastelBg }]} onPress={onBackClick}>
           <Text style={[styles.backBtnText, { color: colors.uniformPastelText }]}>🏠 Dashboard</Text>
         </TouchableOpacity>
+      </View>
+
+      {/* GOVERNMENT NON-OFFICIAL DISCLAIMER BANNER */}
+      <View
+        style={[
+          styles.disclaimerCard,
+          {
+            backgroundColor: isDark ? 'rgba(217, 119, 6, 0.08)' : 'rgba(217, 119, 6, 0.04)',
+            borderColor: isDark ? 'rgba(217, 119, 6, 0.25)' : 'rgba(217, 119, 6, 0.15)',
+            marginBottom: 14,
+          },
+        ]}
+      >
+        <View style={styles.disclaimerHeader}>
+          <Info size={14} color={isDark ? '#F59E0B' : '#D97706'} style={styles.marginRight} />
+          <Text style={[styles.disclaimerTitleText, { color: isDark ? '#F59E0B' : '#D97706', fontWeight: 'bold', fontSize: 11 }]}>
+            {t.disclaimerTitle}
+          </Text>
+        </View>
+        <Text style={[styles.disclaimerText, { color: colors.uniformPastelText, fontSize: 10.5, lineHeight: 15, marginTop: 4 }]}>
+          {t.govtDisclaimer}
+        </Text>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
+          <TouchableOpacity onPress={() => Linking.openURL('https://apiic.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+            <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>apiic.in ↗</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* 1. At A Glance panel */}
@@ -305,5 +334,36 @@ const styles = StyleSheet.create({
   },
   bulletItem: {
     marginBottom: 4,
+  },
+  disclaimerCard: {
+    borderWidth: 1.5,
+    borderRadius: 14,
+    padding: 12,
+    marginVertical: 4,
+  },
+  disclaimerHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  disclaimerTitleText: {
+    fontSize: 11,
+    fontWeight: 'bold',
+  },
+  disclaimerText: {
+    fontSize: 10.5,
+    lineHeight: 15,
+  },
+  linkPill: {
+    borderWidth: 1,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  linkPillText: {
+    fontSize: 9.5,
+    fontWeight: 'bold',
+  },
+  marginRight: {
+    marginRight: 4,
   },
 });

@@ -38,7 +38,8 @@ const mockCoordinates: Record<string, { latitude: number; longitude: number }> =
 
 export const FarmerScreen: React.FC<FarmerScreenProps> = ({ initialSubTab, onClose }) => {
   const { lang, getTxt, t } = useLanguage();
-  const { colors } = useTheme();
+  const { colors, theme } = useTheme();
+  const isDark = theme === 'dark';
   const [subTab, setSubTab] = useState<SubTab | null>(initialSubTab);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [mandiType, setMandiType] = useState<'crops' | 'veg'>('crops');
@@ -185,6 +186,38 @@ export const FarmerScreen: React.FC<FarmerScreenProps> = ({ initialSubTab, onClo
             </Text>
           </TouchableOpacity>
         )}
+      </View>
+
+      {/* Dynamic Government Disclaimer at the Top of Sub-tabs */}
+      <View
+        style={[
+          styles.disclaimerCard,
+          {
+            backgroundColor: isDark ? 'rgba(217, 119, 6, 0.08)' : 'rgba(217, 119, 6, 0.04)',
+            borderColor: isDark ? 'rgba(217, 119, 6, 0.25)' : 'rgba(217, 119, 6, 0.15)',
+            shadowColor: '#d97706',
+            marginBottom: 12,
+          },
+        ]}
+      >
+        <Text style={[styles.disclaimerText, { color: colors.uniformPastelText, fontSize: 10.5, lineHeight: 15 }]}>
+          ⚠️ <Text style={{ fontWeight: 'bold' }}>{t.disclaimerTitle}:</Text> {t.govtDisclaimer}
+        </Text>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
+          {(subTab === 'msp' || subTab === 'advisory' || subTab === 'tractor') && (
+            <TouchableOpacity onPress={() => Linking.openURL('https://pmkisan.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+              <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>pmkisan.gov.in ↗</Text>
+            </TouchableOpacity>
+          )}
+          <TouchableOpacity onPress={() => Linking.openURL('https://kurnool.ap.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+            <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>kurnool.ap.gov.in ↗</Text>
+          </TouchableOpacity>
+          {subTab !== 'msp' && subTab !== 'advisory' && (
+            <TouchableOpacity onPress={() => Linking.openURL('https://www.ap.gov.in')} style={[styles.linkPill, { backgroundColor: isDark ? 'rgba(217, 119, 6, 0.15)' : 'rgba(217, 119, 6, 0.06)', borderColor: isDark ? 'rgba(217, 119, 6, 0.3)' : 'rgba(217, 119, 6, 0.2)' }]}>
+              <Text style={[styles.linkPillText, { color: isDark ? '#F59E0B' : '#D97706' }]}>ap.gov.in ↗</Text>
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
 
       {subTab !== 'feeder' && subTab !== 'water' && (
@@ -442,21 +475,7 @@ export const FarmerScreen: React.FC<FarmerScreenProps> = ({ initialSubTab, onClo
         </View>
       )}
 
-      {/* Government Disclaimer in Subtabs */}
-      <View
-        style={[
-          styles.subTabDisclaimer,
-          {
-            backgroundColor: colors.uniformPastelBg,
-            borderColor: colors.uniformPastelBorder,
-            marginTop: 16,
-          },
-        ]}
-      >
-        <Text style={[styles.subTabDisclaimerText, { color: colors.uniformPastelText }]}>
-          ⚠️ <Text style={{ fontWeight: 'bold' }}>{t.disclaimerTitle}:</Text> {t.govtDisclaimerShort} (Sources: pmkisan.gov.in, kurnool.ap.gov.in)
-        </Text>
-      </View>
+      {/* Disclaimer is now displayed prominently at the top */}
 
     </ScrollView>
   );

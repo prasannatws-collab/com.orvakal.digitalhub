@@ -8,7 +8,7 @@ Copy and paste the following content as your app's full description (en-US) on t
 
 🌐 GOVERNMENT PORTAL SOURCES:
 For the government information, directory details, and services referenced in this app, we compile data from the following government sources:
-1. Kurnool District Local Administration & Officers Directory: https://kurnool.ap.gov.in
+1. Kurnool District Administration & Officers Directory: https://kurnool.ap.gov.in
 2. Andhra Pradesh State Government Portal & Schemes: https://www.ap.gov.in
 3. Government of India National Portal & Central Schemes: https://www.india.gov.in
 4. PM Kisan & Agricultural Minimum Support Price (MSP) Rates: https://pmkisan.gov.in and https://agricoop.nic.in
@@ -20,56 +20,39 @@ For the government information, directory details, and services referenced in th
 
 ---
 
-Welcome to the digital gateway of Orvakal — Andhra Pradesh's fastest-growing Mega Industrial Hub in Kurnool district. This app connects farmers, villagers, students, visitors, and local officers to every service, scheme, and resource they need — all in one place. Whether you're a farmer checking crop rates, a resident filing a panchayat grievance, a job seeker exploring industrial opportunities, or an investor scouting the APIIC corridor — the Orvakal Village Portal is built for you.
+Welcome to the digital gateway of Orvakal — Andhra Pradesh's fastest-growing Mega Industrial Hub in Kurnool district. This app connects farmers, residents, students, visitors, and local officers to every service, scheme, and resource they need — all in one place.
 
 🏭 ABOUT ORVAKAL
-Orvakal is the heart of the Hyderabad–Bengaluru Industrial Corridor (HBIC), home to mega industries like Greenco Solar Park (1000+ MW), UltraTech Cement, Ramco Cement, and the Kurnool Mega Food Park. With Airport KJB nearby and an active panchayat infrastructure, Orvakal is where rural roots meet industrial ambition.
+Orvakal is the heart of the Hyderabad–Bengaluru Industrial Corridor (HBIC), home to mega industries like Greenco Solar Park (1000+ MW), UltraTech Cement, Ramco Cement, and the Kurnool Mega Food Park. The app helps residents and investors stay connected to local growth.
 
 ✅ KEY FEATURES
 
 🏠 Home Dashboard
-- Live weather, local time, and village status at a glance
-- Persona-based quick links for Farmer, Student, Villager, Visitor & Officers
-- Emergency SOS hotlines with one-tap access
-- Orvakal Industrial Hub Insights & Investor Zone
+- Live weather, local time, and village status at a glance.
+- Persona-based quick links for Farmers, Students, Villagers, and Visitors.
+- Emergency SOS hotlines with one-tap access.
+- Orvakal Industrial Hub Insights & Investor Zone.
 
 🏛️ Govt & Info
-- Panchayat Grievance Desk — file and track civic complaints directly
-- Govt Offices & Officers — contact details for Panchayat, SRO, and Tahsildar
-- Schools & Education Centers — government schools and private tuition modules
-- Post Office & Services — speed post, pin codes, savings schemes
-- Banks & ATMs — SBI, APGB, Canara with 24/7 cash status and crop loan rates
-- Government Schemes — state & central schemes for farmers, women, and students
-- Police Station & Security — Sub-Inspector contacts and directory
-- Hospital & PHC Clinics — doctor lists, OPD timings, and bed availability
-- Village Committees — temple, youth, security, and commercial advisory panels
+- Panchayat Grievance Desk: File and track civic complaints directly.
+- Govt Offices & Officers: Contact details for Panchayat, SRO, and Tahsildar.
+- Emergency Directories: Quick contacts for Police Stations, Hospitals, and PHCs.
+- Public Services: Speed post, pin codes, ATM cash status, and local schools.
+- Government Schemes: State & central schemes for farmers, women, and students.
 
 🌾 Farmer Desk
-- Power Feeder Schedule — 3-phase agricultural electricity timings
-- Agri Mandi Rates — real-time crop & vegetable prices with daily trends
-- Minimum Support Price (MSP) — government-mandated prices for major crops
-- Tractor & Machinery Rent — tractors, rotavators & harvesters for local sharing
-- Crop Advisories — pest control, fertilizer dosages, seasonal guidance
-- Water Levels — reservoir capacities and inflow updates
-- Motor & Tractor Repairs — local mechanics sorted by proximity
-- Agricultural Support Officers — Mandal Agricultural Officer contacts
+- Power Feeder Schedule: 3-phase agricultural electricity timings.
+- Agri Mandi & MSP Rates: Live crop prices, vegetable rates, and MSP guidelines.
+- Machinery Rent & Repair: Shared tractors, harvesters, and mechanics.
+- Support Directory: Contacts for Rythu Bharosa Kendras (RBK) & Mandal Agricultural Officers.
 
 🛍️ Services Catalog
-- Food & Restaurants — local eateries and fast food centers
-- Hotel/Stays — lodging, guest houses, and homestays
-- Home Rentals & PGs — houses for rent and hostel facilities
-- Banquet & Event Halls — marriage and function hall bookings
-- Medical Stores — local pharmacies and chemists
-- Milk Dairies — fresh milk booths and cooperatives
-- Tuitions & Coaching — academic and coding classes
-- Boutiques, Tailors & Cloth Shopping
+- Local directories for food, stays, rentals, banks, clinics, and shopping.
 
 💼 Jobs & Commerce
-- Job Board — local and industrial job listings
-- Labour Registry — skilled and unskilled worker database
-- Mega Industries — details on Greenco Solar, UltraTech Cement, Ramco, Kurnool Food Park, and more
+- Job Board: Local and industrial job listings in the corridor.
+- Labour Registry: Platform for skilled and unskilled workers.
+- Mega Industries: Profiles of active companies in the industrial corridor.
 
 🌐 MULTILINGUAL SUPPORT
-Available in English, Telugu (తెలుగు), and Hindi (हिंदी) — serving every resident of the Orvakal region.
-
-📍 Built for Orvakal. Powered by its people. Stay connected to your village, your crops, your government, and your opportunities — anytime, anywhere.
+Available in English, Telugu (తెలుగు), and Hindi (हिंदी) to serve the entire local community.
